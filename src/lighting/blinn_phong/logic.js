@@ -1,5 +1,16 @@
 export const get_description_values = _get_desc;
 export const set_uniforms_values = _set_uniforms_values;
+export const set_active = _set_active;
+export const get_active = _get_active;
+
+
+let __ACTIVE = false;
+function _set_active(active) {
+    __ACTIVE = !!active;
+}
+function _get_active() {
+    return __ACTIVE;
+}
 
 function _get_desc(scene_desc) {
     const { lighting } = scene_desc;
