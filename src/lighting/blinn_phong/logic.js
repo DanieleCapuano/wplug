@@ -5,11 +5,17 @@ export const get_active = _get_active;
 
 
 let __ACTIVE = false;
-function _set_active(active) {
+function _set_active(active, config) {
     __ACTIVE = !!active;
+    return _init(config);
 }
 function _get_active() {
     return __ACTIVE;
+}
+
+function _init(config) {
+    //currently not used
+    return config;
 }
 
 function _get_desc(scene_desc) {
