@@ -18,7 +18,7 @@
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
-    "babel-plugin-import-directory": "1.1.0",
+    "babel-plugin-import-directory": "*",
     "copy-webpack-plugin": "^11.0.0"
   }
 }

@@ -1,3 +1,3 @@
-import { lighting } from 'wplug';
+import { plugins } from 'wplug';
 
-console.info("LIGHTING DATA", lighting);
+console.info("PLUGINS DEF", plugins);

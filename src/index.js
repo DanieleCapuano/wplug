@@ -1,7 +1,18 @@
-import * as LMod from "./lighting";
+import { default as plugins_source } from "./plugins";
 
-const L = LMod.default;
-const lighting = _flatten_logic_into(L);
+const plugins_api = Object.keys(plugins_source).reduce((o, plug_key) => {
+    const def = plugins_source[plug_key].default;
+    return Object.assign(o, {
+        [plug_key]: _flatten_logic_into(def)
+    });
+}, {});
+
+export const plugins = plugins_api;
+export default plugins;
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
 function _flatten_logic_into(main_o) {
     return Object.keys(main_o).reduce((o, l_key) => {
@@ -22,10 +33,3 @@ function _flatten_logic_into(main_o) {
 function _flat_obj(o_tobe_flat, o_dest, k) {
     return Object.assign(o_dest, { [k]: o_tobe_flat[k] });
 }
-
-export {
-    lighting
-};
-export default {
-    lighting
-};
