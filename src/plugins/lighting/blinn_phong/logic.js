@@ -1,17 +1,15 @@
+import { get_active_logic } from "../../utils";
+
 export const get_description_values = _get_desc;
 export const set_uniforms_values = _set_uniforms_values;
-export const set_active = _set_active;
+
+const { _get_active, _set_active } = get_active_logic();
+export const set_active = _set_active.bind(null, _init);
 export const get_active = _get_active;
 
 
-let __ACTIVE = false;
-function _set_active(active, config) {
-    __ACTIVE = !!active;
-    return _init(config);
-}
-function _get_active() {
-    return __ACTIVE;
-}
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 
 function _init(config) {
     //currently not used
