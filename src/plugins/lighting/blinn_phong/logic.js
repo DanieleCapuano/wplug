@@ -1,3 +1,4 @@
+import { set_uniforms } from 'wbase';
 import { get_active_logic } from "../../utils";
 
 export const get_model = _get_model;
@@ -31,9 +32,11 @@ function _get_model(scene_config) {
     return { lighting };
 }
 
-function _draw_loop_callback(obj, scene_config) {
+function _draw_loop_callback(object_config, scene_config) {
     const { lighting } = scene_config;
-    return {
+    const { object_program } = object_config;
+
+    set_uniforms(gl, {
         u_ka: obj.material.ka,
         u_kd: obj.material.kd,
         u_ks: obj.material.ks,
@@ -44,7 +47,7 @@ function _draw_loop_callback(obj, scene_config) {
         u_light_colors: lighting.light_colors,
         u_light_intensities: lighting.light_intensities,
         u_light_specular_exp: lighting.light_specular_exp
-    };
+    }, object_program);
 }
 
 function _cleanup(scene_config) {
