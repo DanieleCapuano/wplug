@@ -1,7 +1,9 @@
 import { get_active_logic } from "../../utils";
 
-export const get_description_values = _get_desc;
-export const set_uniforms_values = _set_uniforms_values;
+export const get_model = _get_model;
+export const draw_loop_fn = _draw_loop_fn;
+export const cleanup = _cleanup;
+
 
 const { _get_active, _set_active } = get_active_logic();
 export const set_active = _set_active.bind(null, _init);
@@ -13,10 +15,14 @@ function _init(config) {
     return config;
 }
 
-function _get_desc(scene_desc) {
+function _get_model(config) {
     return {};
 }
 
-function _set_uniforms_values(obj, scene_desc) {
+function _draw_loop_fn(obj, scene_desc) {
+    return {};
+}
+
+function _cleanup(config) {
     return {};
 }
