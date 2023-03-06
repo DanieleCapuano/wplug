@@ -33,7 +33,7 @@ function _get_model(scene_config) {
 }
 
 function _draw_loop_callback(object_config, scene_config) {
-    const { lighting } = scene_config;
+    const { lighting, gl } = scene_config;
     const { object_program } = object_config;
 
     set_uniforms(gl, {
