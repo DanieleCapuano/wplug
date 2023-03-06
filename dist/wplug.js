@@ -40,6 +40,39 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/plugins/antialiasing/fs_derivatives/index.js":
+/*!**********************************************************!*\
+  !*** ./src/plugins/antialiasing/fs_derivatives/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/plugins/antialiasing/fs_derivatives/logic.js\");\n/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.json */ \"./src/plugins/antialiasing/fs_derivatives/config.json\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shaders/vert.glsl */ \"./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shaders/frag.glsl */ \"./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl\");\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n/*\n  fragment-shader-based partial derivatives approach \n  to implement antialiasing effects. It's basically a fragment-shader-only set of functions\n  \n  Took from \"Procedural Textures in GLSL\" by Stefan Gustavson\n*/\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign({\n  logic: _logic__WEBPACK_IMPORTED_MODULE_0__,\n  config: /*#__PURE__*/ (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(_config_json__WEBPACK_IMPORTED_MODULE_1__, 2))),\n  shaders: {\n    vert: _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__,\n    frag: _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__\n  }\n}));\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/fs_derivatives/logic.js":
+/*!**********************************************************!*\
+  !*** ./src/plugins/antialiasing/fs_derivatives/logic.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\nconst get_model = _get_model;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\n\n///////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////////\n\nfunction _init(scene_config) {\n  //currently not used\n  return scene_config;\n}\nfunction _get_model(scene_config) {\n  return {};\n}\nfunction _draw_loop_callback(object_config, scene_config) {}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/logic.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/index.js":
+/*!*******************************************!*\
+  !*** ./src/plugins/antialiasing/index.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fs_derivatives */ \"./src/plugins/antialiasing/fs_derivatives/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  fs_derivatives: _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/index.js?");
+
+/***/ }),
+
 /***/ "./src/plugins/geom/index.js":
 /*!***********************************!*\
   !*** ./src/plugins/geom/index.js ***!
@@ -80,7 +113,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _geom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./geom */ \"./src/plugins/geom/index.js\");\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  geom: _geom__WEBPACK_IMPORTED_MODULE_0__,\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_1__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _geom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./geom */ \"./src/plugins/geom/index.js\");\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n/* harmony import */ var _antialiasing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antialiasing */ \"./src/plugins/antialiasing/index.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  geom: _geom__WEBPACK_IMPORTED_MODULE_0__,\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_1__,\n  antialiasing: _antialiasing__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
 
 /***/ }),
 
@@ -128,6 +161,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl":
+/*!*******************************************************************!*\
+  !*** ./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"// ' threshold ' is constant , ' value ' is smoothly varying\\nfloat aastep(float threshold , float value) {\\n    float afwidth = 0.7 * length(vec2(dFdx(value), dFdy(value)));\\n    // GLSL ' s fwidth ( value ) is abs ( dFdx ( value ) ) + abs ( dFdy ( value ) )\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\nvec2 aastep2d(float threshold , vec2 value) {\\n    vec2 afwidth = 0.7 * length(vec2(dFdx(value.x), dFdy(value.y)));\\n    // GLSL ' s fwidth ( value ) is abs ( dFdx ( value ) ) + abs ( dFdy ( value ) )\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\n//value in this case is typically a color\\nvec3 aastep3d(float threshold , vec3 value) {\\n    vec3 afwidth = 0.7 * fwidth(value);\\n    // GLSL ' s fwidth ( value ) is abs ( dFdx ( value ) ) + abs ( dFdy ( value ) )\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl":
+/*!*******************************************************************!*\
+  !*** ./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"//none needed here\\nvoid fs_derivatives_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl?");
+
+/***/ }),
+
 /***/ "./src/plugins/geom/quad/shaders/frag.glsl":
 /*!*************************************************!*\
   !*** ./src/plugins/geom/quad/shaders/frag.glsl ***!
@@ -165,6 +218,17 @@ eval("module.exports = \"//material for the square\\nuniform float u_ka, u_kd, u
 /***/ ((module) => {
 
 eval("module.exports = \"//we'll use as inspiration the approach described here\\n//https://stackoverflow.com/a/62630376\\n\\nin vec3 a_normal;\\n\\nconst int MAX_LIGHTS_N = 8;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform int u_nlights;\\n\\nout vec4 normal;\\nout vec3 light_dirs[MAX_LIGHTS_N];\\nout vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nint compute_lighting_vert(mat4 view_m, mat4 modelview_m) {\\n    vec4 view_pos = modelview_m * vec4(a_position, 1.0);\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec4 lpos = view_m * vec4(u_light_positions[i], 1.0);\\n        light_dirs[i] = normalize(lpos.xyz - view_pos.xyz);\\n        \\n        vec3 pos2eye = vec3(-view_pos.xyz);\\n        light_half_vects[i] = normalize(pos2eye + light_dirs[i]);\\n    }\\n    \\n    mat4 Mti = transpose(inverse(modelview_m));\\n    normal = (Mti * vec4(a_normal, 0.0));\\n    \\n    return 1;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/shaders/vert.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/fs_derivatives/config.json":
+/*!*************************************************************!*\
+  !*** ./src/plugins/antialiasing/fs_derivatives/config.json ***!
+  \*************************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/config.json?");
 
 /***/ }),
 
