@@ -1,7 +1,7 @@
 import { get_active_logic } from "../../utils";
 
 export const get_model = _get_model;
-export const draw_loop_fn = _draw_loop_fn;
+export const draw_loop_callback = _draw_loop_callback;
 export const cleanup = _cleanup;
 
 const { _get_active, _set_active } = get_active_logic();
@@ -12,13 +12,13 @@ export const get_active = _get_active;
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
 
-function _init(config) {
+function _init(scene_config) {
     //currently not used
-    return config;
+    return scene_config;
 }
 
-function _get_model(config) {
-    const { scene_desc } = config;
+function _get_model(scene_config) {
+    const { scene_desc } = scene_config;
     const { lighting } = scene_desc;
     if (!lighting) return {};
 
@@ -31,8 +31,8 @@ function _get_model(config) {
     return { lighting };
 }
 
-function _draw_loop_fn(obj, scene_desc) {
-    const { lighting } = scene_desc;
+function _draw_loop_callback(obj, scene_config) {
+    const { lighting } = scene_config;
     return {
         u_ka: obj.material.ka,
         u_kd: obj.material.kd,
@@ -47,6 +47,6 @@ function _draw_loop_fn(obj, scene_desc) {
     };
 }
 
-function _cleanup(config) {
-    return {};
+function _cleanup(scene_config) {
+    return scene_config;
 }
