@@ -1,4 +1,5 @@
 export const get_active_logic = _get_active_logic;
+export const get_config = _get_config;
 
 function _get_active_logic() {
     return (() => {
@@ -13,4 +14,9 @@ function _get_active_logic() {
             return __ACTIVE;
         }
     })();
+}
+
+function _get_config(cfg_json) {
+    let json = cfg_json.default || cfg_json;
+    return JSON.parse(JSON.stringify(json));
 }

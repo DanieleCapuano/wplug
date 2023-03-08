@@ -2,6 +2,7 @@ import * as logic from './logic';
 import * as config from './config.json';
 import * as vert from './shaders/vert.glsl';
 import * as frag from './shaders/frag.glsl';
+import { get_config } from '../../utils';
 
 /*
   fragment-shader-based partial derivatives approach 
@@ -12,7 +13,7 @@ import * as frag from './shaders/frag.glsl';
 
 export default Object.assign({
     logic,
-    config,
+    config: get_config.bind(null, config),
     shaders: {
         vert, frag
     }
