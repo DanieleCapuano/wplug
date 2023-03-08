@@ -15,7 +15,7 @@ out vec3 light_half_vects[MAX_LIGHTS_N];
 int compute_lighting_vert(mat4 view_m, mat4 modelview_m) {
     vec4 view_pos = modelview_m * vec4(a_position, 1.0);
     
-    for(int i = 0; i < u_nlights; i ++ ) {
+    for(int i = 0; i < 3; i ++ ) {
         vec4 lpos = view_m * vec4(u_light_positions[i], 1.0);
         light_dirs[i] = normalize(lpos.xyz - view_pos.xyz);
         

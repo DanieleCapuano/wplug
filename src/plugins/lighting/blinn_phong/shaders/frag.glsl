@@ -22,7 +22,7 @@ vec3 compute_lighting_frag(vec3 start_color) {
     
     color += u_ka * u_ambient_color;
     
-    for(int i = 0; i < u_nlights; i ++ ) {
+    for(int i = 0; i < 3; i ++ ) {
         vec3 l = normalize(light_dirs[i]);
         vec3 h = normalize(light_half_vects[i]);
         float I = u_light_intensities[i];
