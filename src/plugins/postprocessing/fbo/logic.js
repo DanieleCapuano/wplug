@@ -21,7 +21,8 @@ function _init(scene_config) {
 
 function _program_init(scene_config) {
     const //////////////////////////
-        { gl, canvas, objects_to_draw, postprocessing } = scene_config,
+        { gl, canvas, objects_to_draw, scene_desc } = scene_config,
+        { postprocessing } = scene_desc,
         { base_active_texture } = postprocessing;
 
     texture_unit = base_active_texture || gl.TEXTURE0;
@@ -31,7 +32,7 @@ function _program_init(scene_config) {
         const ///////////////////////
             { object_program, fbo } = otd;
 
-        otd.fbo = Object.assign({}, postprocessing, fbo);
+        otd.fbo_opts = Object.assign({}, postprocessing, fbo);
 
         //function _init_program_fbos(current_program, gl, opts)
         init_program_fbos(object_program, gl, Object.assign({}, fbo, canvas));
@@ -47,10 +48,12 @@ function _get_model(scene_config) {
 function _draw_loop_callback(object_config, scene_config) {
     const ////////////////////////
         { gl, canvas, draw_fn } = scene_config,
-        { fbo, object_program } = object_config,
+        { fbo_opts, object_program } = object_config,
         { program_info } = object_program,
         { program } = program_info,
-        { framebuffers_n, framebuffers_offset } = fbo;
+        { has_framebuffer, framebuffers_n, framebuffers_offset } = (fbo_opts || {});
+
+    if (!has_framebuffer) return scene_config;
 
     set_uniforms(gl, {
         u_on_fbo: 1,
@@ -73,6 +76,8 @@ function _draw_loop_callback(object_config, scene_config) {
 
     texture_data.set_framebuffer(gl, null, canvas.width, canvas.height);
     set_uniforms(gl, { u_on_fbo: -1 }, object_program);
+
+    return scene_config;
 }
 
 function _cleanup(scene_config) {
