@@ -73,39 +73,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/plugins/geom/index.js":
-/*!***********************************!*\
-  !*** ./src/plugins/geom/index.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _quad__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quad */ \"./src/plugins/geom/quad/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  quad: _quad__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/index.js?");
-
-/***/ }),
-
-/***/ "./src/plugins/geom/quad/index.js":
-/*!****************************************!*\
-  !*** ./src/plugins/geom/quad/index.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/plugins/geom/quad/logic.js\");\n/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.json */ \"./src/plugins/geom/quad/config.json\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shaders/vert.glsl */ \"./src/plugins/geom/quad/shaders/vert.glsl\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shaders/frag.glsl */ \"./src/plugins/geom/quad/shaders/frag.glsl\");\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign({\n  logic: _logic__WEBPACK_IMPORTED_MODULE_0__,\n  config: _utils__WEBPACK_IMPORTED_MODULE_4__.get_config.bind(null, /*#__PURE__*/ (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(_config_json__WEBPACK_IMPORTED_MODULE_1__, 2)))),\n  shaders: {\n    vert: _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__,\n    frag: _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__\n  }\n}));\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/quad/index.js?");
-
-/***/ }),
-
-/***/ "./src/plugins/geom/quad/logic.js":
-/*!****************************************!*\
-  !*** ./src/plugins/geom/quad/logic.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\nconst get_model = _get_model;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\nfunction _init(scene_config) {\n  //currently not used\n  return config;\n}\nfunction _get_model(scene_config) {\n  return {};\n}\nfunction _draw_loop_callback(obj, scene_config) {\n  return scene_config;\n}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/quad/logic.js?");
-
-/***/ }),
-
 /***/ "./src/plugins/index.js":
 /*!******************************!*\
   !*** ./src/plugins/index.js ***!
@@ -113,7 +80,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _geom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./geom */ \"./src/plugins/geom/index.js\");\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n/* harmony import */ var _antialiasing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antialiasing */ \"./src/plugins/antialiasing/index.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  geom: _geom__WEBPACK_IMPORTED_MODULE_0__,\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_1__,\n  antialiasing: _antialiasing__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n/* harmony import */ var _antialiasing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./antialiasing */ \"./src/plugins/antialiasing/index.js\");\n/* harmony import */ var _postprocessing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./postprocessing */ \"./src/plugins/postprocessing/index.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_0__,\n  antialiasing: _antialiasing__WEBPACK_IMPORTED_MODULE_1__,\n  postprocessing: _postprocessing__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
 
 /***/ }),
 
@@ -135,7 +102,7 @@ eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wbase */ \"./node_modules/wbase/dist/wbase.js\");\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(wbase__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\nconst get_model = _get_model;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\n\n///////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////////\n\nfunction _init(scene_config) {\n  //currently not used\n  return scene_config;\n}\nfunction _get_model(scene_config) {\n  const {\n    scene_desc\n  } = scene_config;\n  const {\n    lighting\n  } = scene_desc;\n  if (!lighting) return {};\n  lighting.light_positions = lighting.lights.reduce((poss, l) => poss.concat(l.position), []);\n  lighting.light_colors = lighting.lights.reduce((cols, l) => cols.concat(l.color), []);\n  lighting.light_intensities = lighting.lights.reduce((ints, l) => ints.concat(l.intensity), []);\n  lighting.light_specular_exp = lighting.lights.reduce((exps, l) => exps.concat(l.specular_exp), []);\n  lighting.number_of_lights = lighting.lights.length;\n  return {\n    lighting\n  };\n}\nfunction _draw_loop_callback(object_config, scene_config) {\n  const {\n    lighting,\n    gl\n  } = scene_config;\n  const {\n    object_program,\n    material\n  } = object_config;\n  const {\n    ka,\n    kd,\n    ks\n  } = material;\n  const {\n    ambient,\n    number_of_lights,\n    light_positions,\n    light_colors,\n    light_intensities,\n    light_specular_exp\n  } = lighting;\n\n  //TODO use uniform block to minimize gl.uniform[...] calls\n  (0,wbase__WEBPACK_IMPORTED_MODULE_0__.set_uniforms)(gl, {\n    u_ka: ka,\n    u_kd: kd,\n    u_ks: ks,\n    u_nlights: number_of_lights,\n    u_ambient_color: ambient.color,\n    u_ambient_intensity: ambient.intensity,\n    u_light_positions: light_positions,\n    u_light_colors: light_colors,\n    u_light_intensities: light_intensities,\n    u_light_specular_exp: light_specular_exp\n  }, object_program);\n}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/logic.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"program_init\": () => (/* binding */ program_init),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wbase */ \"./node_modules/wbase/dist/wbase.js\");\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(wbase__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\nconst get_model = _get_model;\nconst program_init = _program_init;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\n\n///////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////////\n\nfunction _init(scene_config) {\n  //currently not used\n  return scene_config;\n}\nfunction _get_model(scene_config) {\n  const {\n    scene_desc\n  } = scene_config;\n  const {\n    lighting\n  } = scene_desc;\n  if (!lighting) return {};\n  lighting.light_positions = lighting.lights.reduce((poss, l) => poss.concat(l.position), []);\n  lighting.light_colors = lighting.lights.reduce((cols, l) => cols.concat(l.color), []);\n  lighting.light_intensities = lighting.lights.reduce((ints, l) => ints.concat(l.intensity), []);\n  lighting.light_specular_exp = lighting.lights.reduce((exps, l) => exps.concat(l.specular_exp), []);\n  lighting.number_of_lights = lighting.lights.length;\n  return {\n    lighting\n  };\n}\nfunction _program_init(scene_config) {\n  return scene_config;\n}\nfunction _draw_loop_callback(object_config, scene_config) {\n  const {\n    lighting,\n    gl\n  } = scene_config;\n  const {\n    object_program,\n    material\n  } = object_config;\n  const {\n    ka,\n    kd,\n    ks\n  } = material;\n  const {\n    ambient,\n    number_of_lights,\n    light_positions,\n    light_colors,\n    light_intensities,\n    light_specular_exp\n  } = lighting;\n\n  //TODO use uniform block to minimize gl.uniform[...] calls\n  (0,wbase__WEBPACK_IMPORTED_MODULE_0__.set_uniforms)(gl, {\n    u_ka: ka,\n    u_kd: kd,\n    u_ks: ks,\n    u_nlights: number_of_lights,\n    u_ambient_color: ambient.color,\n    u_ambient_intensity: ambient.intensity,\n    u_light_positions: light_positions,\n    u_light_colors: light_colors,\n    u_light_intensities: light_intensities,\n    u_light_specular_exp: light_specular_exp\n  }, object_program);\n}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/logic.js?");
 
 /***/ }),
 
@@ -147,6 +114,39 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _blinn_phong__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blinn_phong */ \"./src/plugins/lighting/blinn_phong/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  blinn_phong: _blinn_phong__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/postprocessing/fbo/index.js":
+/*!*************************************************!*\
+  !*** ./src/plugins/postprocessing/fbo/index.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/plugins/postprocessing/fbo/logic.js\");\n/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.json */ \"./src/plugins/postprocessing/fbo/config.json\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shaders/vert.glsl */ \"./src/plugins/postprocessing/fbo/shaders/vert.glsl\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shaders/frag.glsl */ \"./src/plugins/postprocessing/fbo/shaders/frag.glsl\");\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign({\n  logic: _logic__WEBPACK_IMPORTED_MODULE_0__,\n  config: _utils__WEBPACK_IMPORTED_MODULE_4__.get_config.bind(null, /*#__PURE__*/ (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(_config_json__WEBPACK_IMPORTED_MODULE_1__, 2)))),\n  shaders: {\n    vert: _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__,\n    frag: _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__\n  }\n}));\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/postprocessing/fbo/logic.js":
+/*!*************************************************!*\
+  !*** ./src/plugins/postprocessing/fbo/logic.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"program_init\": () => (/* binding */ program_init),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wbase */ \"./node_modules/wbase/dist/wbase.js\");\n/* harmony import */ var wbase__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wbase__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst get_model = _get_model;\nconst program_init = _program_init;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\n\n///////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////////\n\nfunction _init(scene_config) {\n  //currently not used\n  return scene_config;\n}\nfunction _program_init(scene_config) {\n  const\n    //////////////////////////\n    {\n      gl,\n      canvas,\n      objects_to_draw,\n      postprocessing\n    } = scene_config,\n    {\n      base_active_texture\n    } = postprocessing;\n  texture_unit = base_active_texture || gl.TEXTURE0;\n  gl.activeTexture(texture_unit);\n  objects_to_draw.forEach(otd => {\n    const\n    ///////////////////////\n    {\n      object_program,\n      fbo\n    } = otd;\n    otd.fbo = Object.assign({}, postprocessing, fbo);\n\n    //function _init_program_fbos(current_program, gl, opts)\n    (0,wbase__WEBPACK_IMPORTED_MODULE_1__.init_program_fbos)(object_program, gl, Object.assign({}, fbo, canvas));\n  });\n  return scene_config;\n}\nfunction _get_model(scene_config) {\n  return {};\n}\nfunction _draw_loop_callback(object_config, scene_config) {\n  const\n    ////////////////////////\n    {\n      gl,\n      canvas,\n      draw_fn\n    } = scene_config,\n    {\n      fbo,\n      object_program\n    } = object_config,\n    {\n      program_info\n    } = object_program,\n    {\n      program\n    } = program_info,\n    {\n      framebuffers_n,\n      framebuffers_offset\n    } = fbo;\n  (0,wbase__WEBPACK_IMPORTED_MODULE_1__.set_uniforms)(gl, {\n    u_on_fbo: 1,\n    u_tex: 0\n  }, object_program);\n  for (var ii = framebuffers_offset; ii < framebuffers_n + framebuffers_offset; ++ii) {\n    // Setup to draw into one of the framebuffers.\n    wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.set_framebuffer(gl, wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.get_fbo(program, ii), canvas.width, canvas.height);\n    draw_fn(object_config, scene_config);\n\n    // for the next draw, use as input texture (associated to gl.TEXTURE0) the texture we just rendered to.\n    gl.bindTexture(gl.TEXTURE_2D, wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.get_fbo_texture(program, ii));\n  }\n  wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.set_framebuffer(gl, null, canvas.width, canvas.height);\n  (0,wbase__WEBPACK_IMPORTED_MODULE_1__.set_uniforms)(gl, {\n    u_on_fbo: -1\n  }, object_program);\n}\nfunction _cleanup(scene_config) {\n  const\n  ////////////////////////\n  {\n    gl,\n    objects_to_draw\n  } = scene_config;\n  objects_to_draw.forEach(object_config => {\n    const {\n        fbo,\n        object_program\n      } = object_config,\n      {\n        program_info\n      } = object_program,\n      {\n        program\n      } = program_info,\n      {\n        framebuffers_n,\n        framebuffers_offset\n      } = fbo;\n    for (var ii = framebuffers_offset; ii < framebuffers_n + framebuffers_offset; ++ii) {\n      gl.deleteTexture(wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.get_fbo_texture(program, ii));\n      gl.deleteFramebuffer(wbase__WEBPACK_IMPORTED_MODULE_1__.texture_data.get_fbo(program, ii));\n    }\n    object_program.fbo_data = null;\n  });\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/logic.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/postprocessing/index.js":
+/*!*********************************************!*\
+  !*** ./src/plugins/postprocessing/index.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _fbo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fbo */ \"./src/plugins/postprocessing/fbo/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  fbo: _fbo__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/index.js?");
 
 /***/ }),
 
@@ -181,26 +181,6 @@ eval("module.exports = \"//none needed here\\nvoid fs_derivatives_vert() {}\"\n\
 
 /***/ }),
 
-/***/ "./src/plugins/geom/quad/shaders/frag.glsl":
-/*!*************************************************!*\
-  !*** ./src/plugins/geom/quad/shaders/frag.glsl ***!
-  \*************************************************/
-/***/ ((module) => {
-
-eval("module.exports = \"//material for the square\\nuniform float u_ka, u_kd, u_ks;\\n\\n//max number of allowed lights\\nconst int MAX_LIGHTS_N = 8;\\nuniform vec3 u_ambient_color;\\nuniform float u_ambient_intensity;\\nuniform int u_nlights;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform vec3 u_light_colors[MAX_LIGHTS_N];\\nuniform float u_light_intensities[MAX_LIGHTS_N];\\nuniform float u_light_specular_exp[MAX_LIGHTS_N];\\n\\nin vec4 normal;\\nin vec3 light_dirs[MAX_LIGHTS_N];\\nin vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nvec3 compute_lighting_frag(vec3 start_color) {\\n    vec3 color = start_color;\\n    vec3 n = normalize(normal.xyz);\\n    \\n    color += u_ka * u_ambient_color;\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec3 l = normalize(light_dirs[i]);\\n        vec3 h = normalize(light_half_vects[i]);\\n        float I = u_light_intensities[i];\\n        vec3 Lc = u_light_colors[i];\\n        \\n        color += (\\n            (u_kd * I*max(0.0, dot(n, l)) * Lc) +\\n            (u_ks * I*pow(max(0.0, dot(n, h)), u_light_specular_exp[i]) * Lc)\\n        );\\n    }\\n    \\n    return color;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/quad/shaders/frag.glsl?");
-
-/***/ }),
-
-/***/ "./src/plugins/geom/quad/shaders/vert.glsl":
-/*!*************************************************!*\
-  !*** ./src/plugins/geom/quad/shaders/vert.glsl ***!
-  \*************************************************/
-/***/ ((module) => {
-
-eval("module.exports = \"//we'll use as inspiration the approach described here\\n//https://stackoverflow.com/a/62630376\\n\\nin vec3 a_normal;\\n\\nconst int MAX_LIGHTS_N = 8;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform int u_nlights;\\n\\nout vec4 normal;\\nout vec3 light_dirs[MAX_LIGHTS_N];\\nout vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nint compute_lighting_vert(mat4 view_m, mat4 modelview_m) {\\n    vec4 view_pos = modelview_m * vec4(a_position, 1.0);\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec4 lpos = view_m * vec4(u_light_positions[i], 1.0);\\n        light_dirs[i] = normalize(lpos.xyz - view_pos.xyz);\\n        \\n        vec3 pos2eye = vec3(-view_pos.xyz);\\n        light_half_vects[i] = normalize(pos2eye + light_dirs[i]);\\n    }\\n    \\n    mat4 Mti = transpose(inverse(modelview_m));\\n    normal = (Mti * vec4(a_normal, 0.0));\\n    \\n    return 1;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/quad/shaders/vert.glsl?");
-
-/***/ }),
-
 /***/ "./src/plugins/lighting/blinn_phong/shaders/frag.glsl":
 /*!************************************************************!*\
   !*** ./src/plugins/lighting/blinn_phong/shaders/frag.glsl ***!
@@ -221,6 +201,26 @@ eval("module.exports = \"//we'll use as inspiration the approach described here\
 
 /***/ }),
 
+/***/ "./src/plugins/postprocessing/fbo/shaders/frag.glsl":
+/*!**********************************************************!*\
+  !*** ./src/plugins/postprocessing/fbo/shaders/frag.glsl ***!
+  \**********************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/frag.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/postprocessing/fbo/shaders/vert.glsl":
+/*!**********************************************************!*\
+  !*** ./src/plugins/postprocessing/fbo/shaders/vert.glsl ***!
+  \**********************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\\n//none needed here\\nvoid fbo_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/vert.glsl?");
+
+/***/ }),
+
 /***/ "./src/plugins/antialiasing/fs_derivatives/config.json":
 /*!*************************************************************!*\
   !*** ./src/plugins/antialiasing/fs_derivatives/config.json ***!
@@ -232,17 +232,6 @@ eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//#
 
 /***/ }),
 
-/***/ "./src/plugins/geom/quad/config.json":
-/*!*******************************************!*\
-  !*** ./src/plugins/geom/quad/config.json ***!
-  \*******************************************/
-/***/ ((module) => {
-
-"use strict";
-eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{\"u_nlights\":{\"name\":\"u_nlights\",\"opts\":{\"fn\":\"1i\"}},\"u_ka\":{\"name\":\"u_ka\",\"opts\":{\"fn\":\"1f\"}},\"u_kd\":{\"name\":\"u_kd\",\"opts\":{\"fn\":\"1f\"}},\"u_ks\":{\"name\":\"u_ks\",\"opts\":{\"fn\":\"1f\"}},\"u_ambient_color\":{\"name\":\"u_ambient_color\",\"opts\":{\"fn\":\"3fv\"}},\"u_ambient_intensity\":{\"name\":\"u_ambient_intensity\",\"opts\":{\"fn\":\"1f\"}},\"u_light_positions\":{\"name\":\"u_light_positions\",\"opts\":{\"fn\":\"3fv\"}},\"u_light_colors\":{\"name\":\"u_light_colors\",\"opts\":{\"fn\":\"3fv\"}},\"u_light_intensities\":{\"name\":\"u_light_intensities\",\"opts\":{\"fn\":\"1fv\"}},\"u_light_specular_exp\":{\"name\":\"u_light_specular_exp\",\"opts\":{\"fn\":\"1fv\"}}}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/geom/quad/config.json?");
-
-/***/ }),
-
 /***/ "./src/plugins/lighting/blinn_phong/config.json":
 /*!******************************************************!*\
   !*** ./src/plugins/lighting/blinn_phong/config.json ***!
@@ -251,6 +240,17 @@ eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{\"u_nlights\
 
 "use strict";
 eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{\"u_nlights\":{\"name\":\"u_nlights\",\"opts\":{\"fn\":\"1i\"}},\"u_ka\":{\"name\":\"u_ka\",\"opts\":{\"fn\":\"1f\"}},\"u_kd\":{\"name\":\"u_kd\",\"opts\":{\"fn\":\"1f\"}},\"u_ks\":{\"name\":\"u_ks\",\"opts\":{\"fn\":\"1f\"}},\"u_ambient_color\":{\"name\":\"u_ambient_color\",\"opts\":{\"fn\":\"3fv\"}},\"u_ambient_intensity\":{\"name\":\"u_ambient_intensity\",\"opts\":{\"fn\":\"1f\"}},\"u_light_positions\":{\"name\":\"u_light_positions\",\"opts\":{\"fn\":\"3fv\"}},\"u_light_colors\":{\"name\":\"u_light_colors\",\"opts\":{\"fn\":\"3fv\"}},\"u_light_intensities\":{\"name\":\"u_light_intensities\",\"opts\":{\"fn\":\"1fv\"}},\"u_light_specular_exp\":{\"name\":\"u_light_specular_exp\",\"opts\":{\"fn\":\"1fv\"}}}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/config.json?");
+
+/***/ }),
+
+/***/ "./src/plugins/postprocessing/fbo/config.json":
+/*!****************************************************!*\
+  !*** ./src/plugins/postprocessing/fbo/config.json ***!
+  \****************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{\"u_on_fbo\":{\"name\":\"u_on_fbo\",\"opts\":{\"fn\":\"1i\"}},\"u_tex\":{\"name\":\"u_tex\",\"opts\":{\"fn\":\"1i\"}}}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/config.json?");
 
 /***/ })
 

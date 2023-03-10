@@ -1,0 +1,17 @@
+{
+    "attributes": {},
+    "uniforms": {
+        "u_on_fbo": {
+            "name": "u_on_fbo",
+            "opts": {
+                "fn": "1i"
+            }
+        },
+        "u_tex": {
+            "name": "u_tex",
+            "opts": {
+                "fn": "1i"
+            }
+        }
+    }
+}

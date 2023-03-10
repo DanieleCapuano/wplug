@@ -2,6 +2,7 @@ import { set_uniforms } from 'wbase';
 import { get_active_logic } from "../../utils";
 
 export const get_model = _get_model;
+export const program_init = _program_init;
 export const draw_loop_callback = _draw_loop_callback;
 export const cleanup = _cleanup;
 
@@ -30,6 +31,10 @@ function _get_model(scene_config) {
     lighting.number_of_lights = lighting.lights.length;
 
     return { lighting };
+}
+
+function _program_init(scene_config) {
+    return scene_config;
 }
 
 function _draw_loop_callback(object_config, scene_config) {
