@@ -19,14 +19,18 @@ function _init(scene_config) {
     return scene_config;
 }
 
+function _get_model(scene_config) {
+    return {};
+}
+
 function _program_init(scene_config) {
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
         { postprocessing } = scene_desc,
         { base_active_texture } = postprocessing;
 
-    // let texture_unit = gl.TEXTURE0 + ((base_active_texture !== undefined) ? base_active_texture : 0)
-    // gl.activeTexture(texture_unit);
+    let texture_unit = gl.TEXTURE0 + ((base_active_texture !== undefined) ? base_active_texture : 0)
+    gl.activeTexture(texture_unit);
 
     objects_to_draw.forEach(otd => {
         const ///////////////////////
@@ -40,10 +44,6 @@ function _program_init(scene_config) {
     });
 
     return scene_config;
-}
-
-function _get_model(scene_config) {
-    return {};
 }
 
 function _draw_loop_callback(object_config, scene_config) {
