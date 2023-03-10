@@ -50,11 +50,15 @@ function _draw_loop_callback(object_config, scene_config) {
     const ////////////////////////
         { gl, canvas, draw_fn } = scene_config,
         { object_program } = object_config,
-        { program_info, fbo_opts } = object_program,
+        { program_info, fbo_opts, base_texture } = object_program,
         { program } = program_info,
         { has_framebuffer, framebuffers_n, framebuffers_offset } = (fbo_opts || {});
 
     if (!has_framebuffer) return scene_config;
+
+    if (base_texture) {
+        gl.bindTexture(gl.TEXTURE_2D, base_texture);
+    }
 
     set_uniforms(gl, {
         u_on_fbo: 1,
