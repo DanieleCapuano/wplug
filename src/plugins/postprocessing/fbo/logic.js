@@ -25,8 +25,7 @@ function _program_init(scene_config) {
         { postprocessing } = scene_desc,
         { base_active_texture } = postprocessing;
 
-    texture_unit = base_active_texture || gl.TEXTURE0;
-    gl.activeTexture(texture_unit);
+    gl.activeTexture(base_active_texture || gl.TEXTURE0);
 
     objects_to_draw.forEach(otd => {
         const ///////////////////////
