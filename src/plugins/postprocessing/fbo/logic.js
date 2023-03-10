@@ -20,6 +20,8 @@ function _init(scene_config) {
 }
 
 function _program_init(scene_config) {
+    return scene_config;
+
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
         { postprocessing } = scene_desc,
