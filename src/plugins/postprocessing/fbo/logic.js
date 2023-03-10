@@ -25,17 +25,18 @@ function _program_init(scene_config) {
         { postprocessing } = scene_desc,
         { base_active_texture } = postprocessing;
 
-    let texture_unit = gl.TEXTURE0 + ((base_active_texture !== undefined) ? base_active_texture : 0)
-    gl.activeTexture(texture_unit);
+    // let texture_unit = gl.TEXTURE0 + ((base_active_texture !== undefined) ? base_active_texture : 0)
+    // gl.activeTexture(texture_unit);
 
     objects_to_draw.forEach(otd => {
         const ///////////////////////
             { object_program, fbo } = otd;
 
-        otd.fbo_opts = Object.assign({}, postprocessing, fbo || {});
+        object_program.fbo_opts = Object.assign({}, postprocessing, fbo || {});
+        let opts = object_program.fbo_opts;
 
         //function _init_program_fbos(current_program, gl, opts)
-        init_program_fbos(object_program, gl, Object.assign({}, otd.fbo_opts, { canvas }));
+        init_program_fbos(object_program, gl, Object.assign({}, opts, { canvas }));
     });
 
     return scene_config;
