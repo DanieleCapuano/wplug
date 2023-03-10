@@ -86,10 +86,10 @@ function _cleanup(scene_config) {
         { gl, objects_to_draw } = scene_config;
 
     objects_to_draw.forEach(object_config => {
-        const { fbo, object_program } = object_config,
-            { program_info } = object_program,
+        const { object_program } = object_config,
+            { program_info, fbo_opts } = object_program,
             { program } = program_info,
-            { framebuffers_n, framebuffers_offset } = fbo;
+            { framebuffers_n, framebuffers_offset } = fbo_opts;
 
         for (var ii = framebuffers_offset; ii < framebuffers_n + framebuffers_offset; ++ii) {
             gl.deleteTexture(texture_data.get_fbo_texture(program, ii));
