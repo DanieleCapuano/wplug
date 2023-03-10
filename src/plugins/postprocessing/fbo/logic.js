@@ -20,8 +20,6 @@ function _init(scene_config) {
 }
 
 function _program_init(scene_config) {
-    return scene_config;
-
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
         { postprocessing } = scene_desc,
@@ -38,7 +36,7 @@ function _program_init(scene_config) {
         let opts = object_program.fbo_opts;
 
         //function _init_program_fbos(current_program, gl, opts)
-        init_program_fbos(object_program, gl, Object.assign({}, opts, { canvas }));
+        // init_program_fbos(object_program, gl, Object.assign({}, opts, { canvas }));
     });
 
     return scene_config;
