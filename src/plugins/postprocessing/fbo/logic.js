@@ -50,8 +50,7 @@ function _draw_loop_callback(object_config, scene_config) {
     const ////////////////////////
         { gl, canvas, draw_fn } = scene_config,
         { object_program } = object_config,
-        { program_info, fbo_opts, base_texture } = object_program,
-        { program } = program_info,
+        { fbo_opts, base_texture } = object_program,
         { has_framebuffer, framebuffers_n, framebuffers_offset } = (fbo_opts || {});
 
     if (has_framebuffer === false) return scene_config;
@@ -69,14 +68,14 @@ function _draw_loop_callback(object_config, scene_config) {
         // Setup to draw into one of the framebuffers.
         texture_data.set_framebuffer(
             gl,
-            texture_data.get_fbo(program, ii),
+            texture_data.get_fbo(object_program, ii),
             canvas.width, canvas.height
         );
 
         draw_fn(object_config, scene_config);
 
         // for the next draw, use as input texture (associated to gl.TEXTURE0) the texture we just rendered to.
-        gl.bindTexture(gl.TEXTURE_2D, texture_data.get_fbo_texture(program, ii));
+        gl.bindTexture(gl.TEXTURE_2D, texture_data.get_fbo_texture(object_program, ii));
     }
 
     texture_data.set_framebuffer(gl, null, canvas.width, canvas.height);
@@ -91,13 +90,12 @@ function _cleanup(scene_config) {
 
     objects_to_draw.forEach(object_config => {
         const { object_program } = object_config,
-            { program_info, fbo_opts } = object_program,
-            { program } = program_info,
+            { fbo_opts } = object_program,
             { framebuffers_n, framebuffers_offset } = fbo_opts;
 
         for (var ii = framebuffers_offset; ii < framebuffers_n + framebuffers_offset; ++ii) {
-            gl.deleteTexture(texture_data.get_fbo_texture(program, ii));
-            gl.deleteFramebuffer(texture_data.get_fbo(program, ii));
+            gl.deleteTexture(texture_data.get_fbo_texture(object_program, ii));
+            gl.deleteFramebuffer(texture_data.get_fbo(object_program, ii));
         }
         object_program.fbo_data = null;
     });
