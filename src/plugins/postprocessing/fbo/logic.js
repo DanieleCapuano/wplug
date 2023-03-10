@@ -34,7 +34,7 @@ function _program_init(scene_config) {
         otd.fbo_opts = Object.assign({}, postprocessing, fbo || {});
 
         //function _init_program_fbos(current_program, gl, opts)
-        init_program_fbos(object_program, gl, Object.assign({}, otd.fbo_opts, canvas));
+        init_program_fbos(object_program, gl, Object.assign({}, otd.fbo_opts, { canvas }));
     });
 
     return scene_config;
