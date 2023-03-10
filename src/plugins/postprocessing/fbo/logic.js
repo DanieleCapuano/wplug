@@ -49,8 +49,8 @@ function _get_model(scene_config) {
 function _draw_loop_callback(object_config, scene_config) {
     const ////////////////////////
         { gl, canvas, draw_fn } = scene_config,
-        { fbo_opts, object_program } = object_config,
-        { program_info } = object_program,
+        { object_program } = object_config,
+        { program_info, fbo_opts } = object_program,
         { program } = program_info,
         { has_framebuffer, framebuffers_n, framebuffers_offset } = (fbo_opts || {});
 
