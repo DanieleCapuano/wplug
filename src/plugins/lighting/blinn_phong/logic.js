@@ -38,7 +38,7 @@ function _draw_loop_callback(object_config, scene_config) {
     const { ka, kd, ks } = material;
     const { ambient, number_of_lights, light_positions, light_colors, light_intensities, light_specular_exp } = lighting;
 
-    //TO BE CHECKED
+    //TODO use uniform block to minimize gl.uniform[...] calls
     set_uniforms(gl, {
         u_ka: ka,
         u_kd: kd,
@@ -51,20 +51,6 @@ function _draw_loop_callback(object_config, scene_config) {
         u_light_intensities: light_intensities,
         u_light_specular_exp: light_specular_exp
     }, object_program);
-    // return {
-    //     uniforms: {
-    //         u_ka: ka,
-    //         u_kd: kd,
-    //         u_ks: ks,
-    //         u_nlights: number_of_lights,
-    //         u_ambient_color: ambient.color,
-    //         u_ambient_intensity: ambient.intensity,
-    //         u_light_positions: light_positions,
-    //         u_light_colors: light_colors,
-    //         u_light_intensities: light_intensities,
-    //         u_light_specular_exp: light_specular_exp
-    //     }
-    // };
 }
 
 function _cleanup(scene_config) {
