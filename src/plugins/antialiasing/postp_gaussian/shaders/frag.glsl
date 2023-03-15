@@ -9,7 +9,7 @@ float gaussian_kernel[9] = float[9](
 //from postprocessing.fbo we expect:
 //uniform int u_on_fbo;
 //uniform sampler2D u_tex;
-vec3 postp_gaussian_frag(vec3 tex, float resolution_dim) {
+vec3 postp_gaussian_frag(vec3 tex, float resolution_dim, vec2 texcoord) {
     vec3 col = vec3(0.0);
     float offset = 1.0 / resolution_dim;
     
@@ -28,7 +28,7 @@ vec3 postp_gaussian_frag(vec3 tex, float resolution_dim) {
     if (u_on_fbo == 1.0) {
         //we'll blur
         for(int i = 0; i < 9; i ++ ) {
-            vec3 sample_tex = vec3(texture(u_tex, v_texCoord + offsets[i]));
+            vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));
             col += sample_tex * gaussian_kernel[i];
         }
     }
