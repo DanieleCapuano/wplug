@@ -69,7 +69,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fs_derivatives */ \"./src/plugins/antialiasing/fs_derivatives/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  fs_derivatives: _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fs_derivatives */ \"./src/plugins/antialiasing/fs_derivatives/index.js\");\n/* harmony import */ var _postp_gaussian__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./postp_gaussian */ \"./src/plugins/antialiasing/postp_gaussian/index.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  fs_derivatives: _fs_derivatives__WEBPACK_IMPORTED_MODULE_0__,\n  postp_gaussian: _postp_gaussian__WEBPACK_IMPORTED_MODULE_1__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/postp_gaussian/index.js":
+/*!**********************************************************!*\
+  !*** ./src/plugins/antialiasing/postp_gaussian/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/plugins/antialiasing/postp_gaussian/logic.js\");\n/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.json */ \"./src/plugins/antialiasing/postp_gaussian/config.json\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shaders/vert.glsl */ \"./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shaders/frag.glsl */ \"./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl\");\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign({\n  logic: _logic__WEBPACK_IMPORTED_MODULE_0__,\n  config: _utils__WEBPACK_IMPORTED_MODULE_4__.get_config.bind(null, /*#__PURE__*/ (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(_config_json__WEBPACK_IMPORTED_MODULE_1__, 2)))),\n  shaders: {\n    vert: _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__,\n    frag: _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__\n  },\n  requires: {\n    postprocessing: {\n      id: \"fbo\",\n      framebuffers_n: 1,\n      framebuffers_offset: 1,\n      base_active_texture: 0\n    }\n  }\n}));\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/postp_gaussian/logic.js":
+/*!**********************************************************!*\
+  !*** ./src/plugins/antialiasing/postp_gaussian/logic.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"program_init\": () => (/* binding */ program_init),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\nconst get_model = _get_model;\nconst program_init = _program_init;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\nfunction _init(scene_config) {\n  //currently not used\n  return config;\n}\nfunction _get_model(scene_config) {\n  return {};\n}\nfunction _program_init(scene_config) {\n  return scene_config;\n}\nfunction _draw_loop_callback(obj, scene_config) {\n  return scene_config;\n}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/logic.js?");
 
 /***/ }),
 
@@ -181,6 +203,26 @@ eval("module.exports = \"//none needed here\\nvoid fs_derivatives_vert() {}\"\n\
 
 /***/ }),
 
+/***/ "./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl":
+/*!*******************************************************************!*\
+  !*** ./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"\\nconst float div = 16.0;\\nfloat gaussian_kernel[9] = float[9](\\n    1.0 / div, 2.0 / div, 1.0 / div,\\n    2.0 / div, 4.0 / div, 2.0 / div,\\n    1.0 / div, 2.0 / div, 1.0 / div\\n);\\n\\n//from postprocessing.fbo we expect:\\n//uniform int u_on_fbo;\\n//uniform sampler2D u_tex;\\nvec3 postp_gaussian_frag(vec3 tex, float resolution_dim, vec2 texcoord) {\\n    vec3 col = vec3(0.0);\\n    float offset = 1.0 / resolution_dim;\\n    \\n    vec2 offsets[9] = vec2[9](\\n        vec2(-offset, offset), // top-left\\n        vec2(0.0f, offset), // top-center\\n        vec2(offset, offset), // top-right\\n        vec2(-offset, 0.0f), // center-left\\n        vec2(0.0f, 0.0f), // center-center\\n        vec2(offset, 0.0f), // center-right\\n        vec2(-offset, - offset), // bottom-left\\n        vec2(0.0f, - offset), // bottom-center\\n        vec2(offset, - offset)// bottom-right\\n    );\\n    \\n    if (u_on_fbo == 1.0) {\\n        //we'll blur\\n        for(int i = 0; i < 9; i ++ ) {\\n            vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));\\n            col += sample_tex * gaussian_kernel[i];\\n        }\\n    }\\n    \\n    return col;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl":
+/*!*******************************************************************!*\
+  !*** ./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"void postp_gaussian_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl?");
+
+/***/ }),
+
 /***/ "./src/plugins/lighting/blinn_phong/shaders/frag.glsl":
 /*!************************************************************!*\
   !*** ./src/plugins/lighting/blinn_phong/shaders/frag.glsl ***!
@@ -229,6 +271,17 @@ eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\\n/
 
 "use strict";
 eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/config.json?");
+
+/***/ }),
+
+/***/ "./src/plugins/antialiasing/postp_gaussian/config.json":
+/*!*************************************************************!*\
+  !*** ./src/plugins/antialiasing/postp_gaussian/config.json ***!
+  \*************************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/config.json?");
 
 /***/ }),
 
