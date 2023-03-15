@@ -13,7 +13,7 @@ export const get_active = _get_active;
 
 function _init(scene_config) {
     //currently not used
-    return config;
+    return scene_config;
 }
 
 function _get_model(scene_config) {
