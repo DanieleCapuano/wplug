@@ -189,7 +189,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"// ' threshold ' is constant , ' value ' is smoothly varying\\nfloat aastep(float threshold , float value) {\\n    float afwidth = 0.7 * length(vec2(dFdx(value), dFdy(value)));\\n    // GLSL ' s fwidth ( value ) is abs ( dFdx ( value ) ) + abs ( dFdy ( value ) )\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\nvec2 aastep2d(float threshold , vec2 value) {\\n    vec2 afwidth = 0.7 * fwidth(value);\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\n//value in this case is typically a color\\nvec3 aastep3d(float threshold , vec3 value) {\\n    vec3 afwidth = 0.7 * fwidth(value);\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl?");
+eval("module.exports = \"/* <antialiasing.fs_derivatives.frag> */\\n\\n// ' threshold ' is constant , ' value ' is smoothly varying\\nfloat aastep(float threshold , float value) {\\n    float afwidth = 0.7 * length(vec2(dFdx(value), dFdy(value)));\\n    // GLSL ' s fwidth ( value ) is abs ( dFdx ( value ) ) + abs ( dFdy ( value ) )\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\nvec2 aastep2d(float threshold , vec2 value) {\\n    vec2 afwidth = 0.7 * fwidth(value);\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\n//value in this case is typically a color\\nvec3 aastep3d(float threshold , vec3 value) {\\n    vec3 afwidth = 0.7 * fwidth(value);\\n    return smoothstep(threshold - afwidth , threshold + afwidth , value);\\n}\\n\\n/* </antialiasing.fs_derivatives.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/frag.glsl?");
 
 /***/ }),
 
@@ -199,7 +199,7 @@ eval("module.exports = \"// ' threshold ' is constant , ' value ' is smoothly va
   \*******************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"//none needed here\\nvoid fs_derivatives_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl?");
+eval("module.exports = \"/* <antialiasing.fs_derivatives.vert> */\\n\\nvoid fs_derivatives_vert() {}\\n\\n/* </antialiasing.fs_derivatives.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/fs_derivatives/shaders/vert.glsl?");
 
 /***/ }),
 
@@ -209,7 +209,7 @@ eval("module.exports = \"//none needed here\\nvoid fs_derivatives_vert() {}\"\n\
   \*******************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"\\nconst float div = 16.0;\\nfloat gaussian_kernel[9] = float[9](\\n    1.0 / div, 2.0 / div, 1.0 / div,\\n    2.0 / div, 4.0 / div, 2.0 / div,\\n    1.0 / div, 2.0 / div, 1.0 / div\\n);\\n\\n//from postprocessing.fbo we expect:\\n//uniform int u_on_fbo;\\n//uniform sampler2D u_tex;\\nvec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {\\n    vec3 col = vec3(0.0);\\n    float offset = 1.0 / resolution_dim;\\n    \\n    vec2 offsets[9] = vec2[9](\\n        vec2(-offset, offset), // top-left\\n        vec2(0.0f, offset), // top-center\\n        vec2(offset, offset), // top-right\\n        vec2(-offset, 0.0f), // center-left\\n        vec2(0.0f, 0.0f), // center-center\\n        vec2(offset, 0.0f), // center-right\\n        vec2(-offset, - offset), // bottom-left\\n        vec2(0.0f, - offset), // bottom-center\\n        vec2(offset, - offset)// bottom-right\\n    );\\n    \\n    if (float(u_on_fbo) == 1.0) {\\n        //we'll blur\\n        for(int i = 0; i < 9; i ++ ) {\\n            vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));\\n            col += sample_tex * gaussian_kernel[i];\\n        }\\n    }\\n    \\n    return col;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl?");
+eval("module.exports = \"/* <antialiasing.postp_gaussian.frag> */\\n\\n//from postprocessing.fbo we expect:\\n//uniform int u_on_fbo;\\n//uniform sampler2D u_tex;\\nvec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {\\n    vec3 col = vec3(0.0);\\n    \\n    const float div = 16.0;\\n    float gaussian_kernel[9] = float[9](\\n        1.0 / div, 2.0 / div, 1.0 / div,\\n        2.0 / div, 4.0 / div, 2.0 / div,\\n        1.0 / div, 2.0 / div, 1.0 / div\\n    );\\n    \\n    float offset = 1.0 / max(resolution_dim, 1.);\\n    vec2 offsets[9] = vec2[9](\\n        vec2(-offset, offset), // top-left\\n        vec2(0.0, offset), // top-center\\n        vec2(offset, offset), // top-right\\n        vec2(-offset, 0.0), // center-left\\n        vec2(0.0, 0.0), // center-center\\n        vec2(offset, 0.0), // center-right\\n        vec2(-offset, - offset), // bottom-left\\n        vec2(0.0, - offset), // bottom-center\\n        vec2(offset, - offset)// bottom-right\\n    );\\n    \\n    if (u_on_fbo == 1) {\\n        //we'll blur\\n        for(int i = 0; i < 9; i ++ ) {\\n            vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));\\n            col += sample_tex * gaussian_kernel[i];\\n        }\\n    }\\n    \\n    return col;\\n}\\n\\n/* </antialiasing.postp_gaussian.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl?");
 
 /***/ }),
 
@@ -219,7 +219,7 @@ eval("module.exports = \"\\nconst float div = 16.0;\\nfloat gaussian_kernel[9] =
   \*******************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"void postp_gaussian_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl?");
+eval("module.exports = \"/* <antialiasing.postp_gaussian.vert> */\\n\\nvoid postp_gaussian_vert() {}\\n\\n/* </antialiasing.postp_gaussian.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl?");
 
 /***/ }),
 
@@ -229,7 +229,7 @@ eval("module.exports = \"void postp_gaussian_vert() {}\"\n\n//# sourceURL=webpac
   \************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"//material for the square\\nuniform float u_ka, u_kd, u_ks;\\n\\n//max number of allowed lights\\nconst int MAX_LIGHTS_N = 8;\\nuniform vec3 u_ambient_color;\\nuniform float u_ambient_intensity;\\nuniform int u_nlights;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform vec3 u_light_colors[MAX_LIGHTS_N];\\nuniform float u_light_intensities[MAX_LIGHTS_N];\\nuniform float u_light_specular_exp[MAX_LIGHTS_N];\\n\\nin vec4 normal;\\nin vec3 light_dirs[MAX_LIGHTS_N];\\nin vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nvec3 compute_lighting_frag(vec3 start_color) {\\n    vec3 color = start_color;\\n    vec3 n = normalize(normal.xyz);\\n    \\n    color += u_ka * u_ambient_color;\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec3 l = normalize(light_dirs[i]);\\n        vec3 h = normalize(light_half_vects[i]);\\n        float I = u_light_intensities[i];\\n        vec3 Lc = u_light_colors[i];\\n        \\n        color += (\\n            (u_kd * I*max(0.0, dot(n, l)) * Lc) +\\n            (u_ks * I*pow(max(0.0, dot(n, h)), u_light_specular_exp[i]) * Lc)\\n        );\\n    }\\n    \\n    return color;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/shaders/frag.glsl?");
+eval("module.exports = \"/* <lighting.blinn_phong.frag> */\\n\\n//material for the square\\nuniform float u_ka, u_kd, u_ks;\\n\\n//max number of allowed lights\\nconst int MAX_LIGHTS_N = 8;\\nuniform vec3 u_ambient_color;\\nuniform float u_ambient_intensity;\\nuniform int u_nlights;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform vec3 u_light_colors[MAX_LIGHTS_N];\\nuniform float u_light_intensities[MAX_LIGHTS_N];\\nuniform float u_light_specular_exp[MAX_LIGHTS_N];\\n\\nin vec4 normal;\\nin vec3 light_dirs[MAX_LIGHTS_N];\\nin vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nvec3 compute_lighting_frag(vec3 start_color) {\\n    vec3 color = start_color;\\n    vec3 n = normalize(normal.xyz);\\n    \\n    color += u_ka * u_ambient_color;\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec3 l = normalize(light_dirs[i]);\\n        vec3 h = normalize(light_half_vects[i]);\\n        float I = u_light_intensities[i];\\n        vec3 Lc = u_light_colors[i];\\n        \\n        color += (\\n            (u_kd * I*max(0.0, dot(n, l)) * Lc) +\\n            (u_ks * I*pow(max(0.0, dot(n, h)), u_light_specular_exp[i]) * Lc)\\n        );\\n    }\\n    \\n    return color;\\n}\\n\\n/* </lighting.blinn_phong.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/shaders/frag.glsl?");
 
 /***/ }),
 
@@ -239,7 +239,7 @@ eval("module.exports = \"//material for the square\\nuniform float u_ka, u_kd, u
   \************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"//we'll use as inspiration the approach described here\\n//https://stackoverflow.com/a/62630376\\n\\nin vec3 a_normal;\\n\\nconst int MAX_LIGHTS_N = 8;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform int u_nlights;\\n\\nout vec4 normal;\\nout vec3 light_dirs[MAX_LIGHTS_N];\\nout vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nint compute_lighting_vert(mat4 view_m, mat4 modelview_m) {\\n    vec4 view_pos = modelview_m * vec4(a_position, 1.0);\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec4 lpos = view_m * vec4(u_light_positions[i], 1.0);\\n        light_dirs[i] = normalize(lpos.xyz - view_pos.xyz);\\n        \\n        vec3 pos2eye = vec3(-view_pos.xyz);\\n        light_half_vects[i] = normalize(pos2eye + light_dirs[i]);\\n    }\\n    \\n    mat4 Mti = transpose(inverse(modelview_m));\\n    normal = (Mti * vec4(a_normal, 0.0));\\n    \\n    return 1;\\n}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/shaders/vert.glsl?");
+eval("module.exports = \"/* <lighting.blinn_phong.vert> */\\n\\n//we'll use as inspiration the approach described here\\n//https://stackoverflow.com/a/62630376\\n\\nin vec3 a_normal;\\n\\nconst int MAX_LIGHTS_N = 8;\\n\\nuniform vec3 u_light_positions[MAX_LIGHTS_N];\\nuniform int u_nlights;\\n\\nout vec4 normal;\\nout vec3 light_dirs[MAX_LIGHTS_N];\\nout vec3 light_half_vects[MAX_LIGHTS_N];\\n\\nint compute_lighting_vert(mat4 view_m, mat4 modelview_m) {\\n    vec4 view_pos = modelview_m * vec4(a_position, 1.0);\\n    \\n    for(int i = 0; i < u_nlights; i ++ ) {\\n        vec4 lpos = view_m * vec4(u_light_positions[i], 1.0);\\n        light_dirs[i] = normalize(lpos.xyz - view_pos.xyz);\\n        \\n        vec3 pos2eye = vec3(-view_pos.xyz);\\n        light_half_vects[i] = normalize(pos2eye + light_dirs[i]);\\n    }\\n    \\n    mat4 Mti = transpose(inverse(modelview_m));\\n    normal = (Mti * vec4(a_normal, 0.0));\\n    \\n    return 1;\\n}\\n\\n/* </lighting.blinn_phong.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/lighting/blinn_phong/shaders/vert.glsl?");
 
 /***/ }),
 
@@ -249,7 +249,7 @@ eval("module.exports = \"//we'll use as inspiration the approach described here\
   \**********************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/frag.glsl?");
+eval("module.exports = \"/* <postprocessing.fbo.frag> */\\n\\nuniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\\n/* </postprocessing.fbo.frag> */\\n\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/frag.glsl?");
 
 /***/ }),
 
@@ -259,7 +259,7 @@ eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\"\n
   \**********************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"uniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\\n//none needed here\\nvoid fbo_vert() {}\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/vert.glsl?");
+eval("module.exports = \"/* <postprocessing.fbo.vert> */\\n\\nuniform int u_on_fbo;\\nuniform sampler2D u_tex;\\n\\n//none needed here\\nvoid fbo_vert() {}\\n\\n/* </postprocessing.fbo.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/postprocessing/fbo/shaders/vert.glsl?");
 
 /***/ }),
 

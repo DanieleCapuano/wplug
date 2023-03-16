@@ -1,3 +1,5 @@
+/* <lighting.blinn_phong.frag> */
+
 //material for the square
 uniform float u_ka, u_kd, u_ks;
 
@@ -36,3 +38,5 @@ vec3 compute_lighting_frag(vec3 start_color) {
     
     return color;
 }
+
+/* </lighting.blinn_phong.frag> */

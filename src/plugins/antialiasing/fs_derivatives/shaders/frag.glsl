@@ -1,3 +1,5 @@
+/* <antialiasing.fs_derivatives.frag> */
+
 // ' threshold ' is constant , ' value ' is smoothly varying
 float aastep(float threshold , float value) {
     float afwidth = 0.7 * length(vec2(dFdx(value), dFdy(value)));
@@ -15,3 +17,5 @@ vec3 aastep3d(float threshold , vec3 value) {
     vec3 afwidth = 0.7 * fwidth(value);
     return smoothstep(threshold - afwidth , threshold + afwidth , value);
 }
+
+/* </antialiasing.fs_derivatives.frag> */

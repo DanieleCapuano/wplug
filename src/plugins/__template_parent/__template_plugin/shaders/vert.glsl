@@ -1,1 +1,5 @@
-//your code here for vs
+/* <plugin_type.plugin_id.frag> */
+
+//your code here
+
+/* <//plugin_type.plugin_id.frag> */

@@ -1,3 +1,5 @@
+/* <lighting.blinn_phong.vert> */
+
 //we'll use as inspiration the approach described here
 //https://stackoverflow.com/a/62630376
 
@@ -28,3 +30,5 @@ int compute_lighting_vert(mat4 view_m, mat4 modelview_m) {
     
     return 1;
 }
+
+/* </lighting.blinn_phong.vert> */
