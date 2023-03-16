@@ -22,13 +22,15 @@ function _init(scene_config) {
 function _get_model(scene_config) {
     const { scene_desc } = scene_config;
     const { lighting } = scene_desc;
-    if (!lighting) return {};
+    const lid = (lighting || []).findIndex(l => l.id === 'blinn_phong');
 
-    lighting.light_positions = lighting.lights.reduce((poss, l) => poss.concat(l.position), []);
-    lighting.light_colors = lighting.lights.reduce((cols, l) => cols.concat(l.color), []);
-    lighting.light_intensities = lighting.lights.reduce((ints, l) => ints.concat(l.intensity), []);
-    lighting.light_specular_exp = lighting.lights.reduce((exps, l) => exps.concat(l.specular_exp), []);
-    lighting.number_of_lights = lighting.lights.length;
+    if (lid === -1) return {};
+
+    lighting[lid].light_positions = lighting[lid].lights.reduce((poss, l) => poss.concat(l.position), []);
+    lighting[lid].light_colors = lighting[lid].lights.reduce((cols, l) => cols.concat(l.color), []);
+    lighting[lid].light_intensities = lighting[lid].lights.reduce((ints, l) => ints.concat(l.intensity), []);
+    lighting[lid].light_specular_exp = lighting[lid].lights.reduce((exps, l) => exps.concat(l.specular_exp), []);
+    lighting[lid].number_of_lights = lighting[lid].lights.length;
 
     return { lighting };
 }
@@ -39,9 +41,10 @@ function _program_init(scene_config) {
 
 function _draw_loop_callback(object_config, scene_config) {
     const { lighting, gl } = scene_config;
+    const lighting_conf = (lighting || []).find(l => l.id === 'blinn_phong');
     const { object_program, material } = object_config;
     const { ka, kd, ks } = material;
-    const { ambient, number_of_lights, light_positions, light_colors, light_intensities, light_specular_exp } = lighting;
+    const { ambient, number_of_lights, light_positions, light_colors, light_intensities, light_specular_exp } = lighting_conf;
 
     //TODO use uniform block to minimize gl.uniform[...] calls
     set_uniforms(gl, {

@@ -27,7 +27,8 @@ function _program_init(scene_config) {
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
         { postprocessing } = scene_desc,
-        { base_active_texture } = postprocessing;
+        fbo_conf = (postprocessing || []).find(cfg => cfg.id === 'fbo'),
+        { base_active_texture } = fbo_conf;
 
     let texture_unit = gl.TEXTURE0 + ((base_active_texture !== undefined) ? base_active_texture : 0)
     gl.activeTexture(texture_unit);
