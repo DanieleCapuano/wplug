@@ -3,17 +3,17 @@
 //from postprocessing.fbo we expect:
 //uniform int u_on_fbo;
 //uniform sampler2D u_tex;
-vec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {
-    vec3 col = vec3(0.0);
+vec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, float divider) {
+    vec3 col = base_color;
     
-    const float div = 16.0;
+    float div = ((divider == 0.) ? 16.0 : divider);
     float gaussian_kernel[9] = float[9](
         1.0 / div, 2.0 / div, 1.0 / div,
         2.0 / div, 4.0 / div, 2.0 / div,
         1.0 / div, 2.0 / div, 1.0 / div
     );
     
-    float offset = 1.0 / max(resolution_dim, 1.);
+    float offset = 1.0 / max(resolution_dim, 0.01);
     vec2 offsets[9] = vec2[9](
         vec2(-offset, offset), // top-left
         vec2(0.0, offset), // top-center
@@ -26,13 +26,13 @@ vec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {
         vec2(offset, - offset)// bottom-right
     );
     
-    // if (u_on_fbo != 1) {
-        //     //we'll blur
-        //     for(int i = 0; i < 9; i ++ ) {
-            //         vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));
-            //         col += sample_tex * gaussian_kernel[i];
-        //     }
-    // }
+    if (float(u_on_fbo) != 1.) {
+        //we'll blur
+        for(int i = 0; i < 9; i ++ ) {
+            vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));
+            col += sample_tex * gaussian_kernel[i];
+        }
+    }
     
     return col;
 }
