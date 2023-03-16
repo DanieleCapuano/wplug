@@ -9,7 +9,7 @@ float gaussian_kernel[9] = float[9](
 //from postprocessing.fbo we expect:
 //uniform int u_on_fbo;
 //uniform sampler2D u_tex;
-vec3 postp_gaussian_frag(vec3 tex, float resolution_dim, vec2 texcoord) {
+vec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {
     vec3 col = vec3(0.0);
     float offset = 1.0 / resolution_dim;
     
