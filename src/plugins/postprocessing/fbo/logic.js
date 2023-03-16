@@ -37,7 +37,7 @@ function _program_init(scene_config) {
         const ///////////////////////
             { object_program, fbo } = otd;
 
-        object_program.fbo_opts = Object.assign({}, postprocessing, fbo || {});
+        object_program.fbo_opts = Object.assign({}, fbo_conf, fbo || {});
         let opts = object_program.fbo_opts;
 
         //function _init_program_fbos(current_program, gl, opts)
