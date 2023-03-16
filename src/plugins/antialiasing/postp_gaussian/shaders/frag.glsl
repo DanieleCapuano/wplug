@@ -26,13 +26,13 @@ vec3 postp_gaussian_frag(float resolution_dim, vec2 texcoord) {
         vec2(offset, - offset)// bottom-right
     );
     
-    if (u_on_fbo != 1) {
-        //we'll blur
-        for(int i = 0; i < 9; i ++ ) {
-            vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));
-            col += sample_tex * gaussian_kernel[i];
-        }
-    }
+    // if (u_on_fbo != 1) {
+        //     //we'll blur
+        //     for(int i = 0; i < 9; i ++ ) {
+            //         vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));
+            //         col += sample_tex * gaussian_kernel[i];
+        //     }
+    // }
     
     return col;
 }
