@@ -95,6 +95,39 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/plugins/geometry/index.js":
+/*!***************************************!*\
+  !*** ./src/plugins/geometry/index.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _quad__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quad */ \"./src/plugins/geometry/quad/index.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  quad: _quad__WEBPACK_IMPORTED_MODULE_0__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/geometry/quad/index.js":
+/*!********************************************!*\
+  !*** ./src/plugins/geometry/quad/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("var _config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache;\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/plugins/geometry/quad/logic.js\");\n/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.json */ \"./src/plugins/geometry/quad/config.json\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shaders/vert.glsl */ \"./src/plugins/geometry/quad/shaders/vert.glsl\");\n/* harmony import */ var _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shaders/frag.glsl */ \"./src/plugins/geometry/quad/shaders/frag.glsl\");\n/* harmony import */ var _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign({\n  logic: _logic__WEBPACK_IMPORTED_MODULE_0__,\n  config: _utils__WEBPACK_IMPORTED_MODULE_4__.get_config.bind(null, /*#__PURE__*/ (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (_config_json__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(_config_json__WEBPACK_IMPORTED_MODULE_1__, 2)))),\n  shaders: {\n    vert: _shaders_vert_glsl__WEBPACK_IMPORTED_MODULE_2__,\n    frag: _shaders_frag_glsl__WEBPACK_IMPORTED_MODULE_3__\n  }\n}));\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/quad/index.js?");
+
+/***/ }),
+
+/***/ "./src/plugins/geometry/quad/logic.js":
+/*!********************************************!*\
+  !*** ./src/plugins/geometry/quad/logic.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cleanup\": () => (/* binding */ cleanup),\n/* harmony export */   \"draw_loop_callback\": () => (/* binding */ draw_loop_callback),\n/* harmony export */   \"get_active\": () => (/* binding */ get_active),\n/* harmony export */   \"get_model\": () => (/* binding */ get_model),\n/* harmony export */   \"program_init\": () => (/* binding */ program_init),\n/* harmony export */   \"set_active\": () => (/* binding */ set_active)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ \"./src/plugins/utils.js\");\n\nconst get_model = _get_model;\nconst program_init = _program_init;\nconst draw_loop_callback = _draw_loop_callback;\nconst cleanup = _cleanup;\nconst {\n  _get_active,\n  _set_active\n} = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.get_active_logic)();\nconst set_active = _set_active.bind(null, _init);\nconst get_active = _get_active;\nfunction _init(scene_config) {\n  //generate the coordinates\n  const {\n    scene_desc,\n    objects_desc,\n    canvas\n  } = scene_config;\n  const {\n    geometry,\n    objects\n  } = scene_desc;\n  const {\n    fullscreen,\n    width,\n    height\n  } = geometry || {};\n  Object.keys(objects).forEach(obj_id => {\n    const obj_conf = objects[obj_id];\n    if (!obj_conf.quad) return;\n    const {\n        quad\n      } = obj_conf,\n      obj = objects_desc.find(o => o.id === obj_id);\n    let w = quad.fullscreen || fullscreen ? canvas.width : quad.width || width,\n      h = quad.fullscreen || fullscreen ? w / canvas.height : w / (quad.height || height);\n    obj.coordinates_def = [[-0.5, -h, 0.5], [0.5, -h, 0.5], [-0.5, h, 0.5], [-0.5, h, 0.5], [0.5, -h, 0.5], [0.5, h, 0.5]];\n  });\n  return scene_config;\n}\nfunction _get_model(scene_config) {\n  return {};\n}\nfunction _program_init(scene_config) {\n  return scene_config;\n}\nfunction _draw_loop_callback(obj, scene_config) {\n  return scene_config;\n}\nfunction _cleanup(scene_config) {\n  return scene_config;\n}\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/quad/logic.js?");
+
+/***/ }),
+
 /***/ "./src/plugins/index.js":
 /*!******************************!*\
   !*** ./src/plugins/index.js ***!
@@ -102,7 +135,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n/* harmony import */ var _antialiasing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./antialiasing */ \"./src/plugins/antialiasing/index.js\");\n/* harmony import */ var _postprocessing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./postprocessing */ \"./src/plugins/postprocessing/index.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_0__,\n  antialiasing: _antialiasing__WEBPACK_IMPORTED_MODULE_1__,\n  postprocessing: _postprocessing__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _lighting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lighting */ \"./src/plugins/lighting/index.js\");\n/* harmony import */ var _antialiasing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./antialiasing */ \"./src/plugins/antialiasing/index.js\");\n/* harmony import */ var _postprocessing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./postprocessing */ \"./src/plugins/postprocessing/index.js\");\n/* harmony import */ var _geometry__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geometry */ \"./src/plugins/geometry/index.js\");\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  lighting: _lighting__WEBPACK_IMPORTED_MODULE_0__,\n  antialiasing: _antialiasing__WEBPACK_IMPORTED_MODULE_1__,\n  postprocessing: _postprocessing__WEBPACK_IMPORTED_MODULE_2__,\n  geometry: _geometry__WEBPACK_IMPORTED_MODULE_3__\n});\n\n//# sourceURL=webpack://wplug/./src/plugins/index.js?");
 
 /***/ }),
 
@@ -209,7 +242,7 @@ eval("module.exports = \"/* <antialiasing.fs_derivatives.vert> */\\n\\nvoid fs_d
   \*******************************************************************/
 /***/ ((module) => {
 
-eval("module.exports = \"/* <antialiasing.postp_gaussian.frag> */\\n\\n//from postprocessing.fbo we expect:\\n//uniform int u_on_fbo;\\n//uniform sampler2D u_tex;\\nvec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, float divider) {\\n    vec3 col = base_color;\\n    \\n    float div = ((divider == 0.) ? 16.0 : divider);\\n    float gaussian_kernel[9] = float[9](\\n        1.0 / div, 2.0 / div, 1.0 / div,\\n        2.0 / div, 4.0 / div, 2.0 / div,\\n        1.0 / div, 2.0 / div, 1.0 / div\\n    );\\n    \\n    float offset = 1.0 / max(resolution_dim, 0.01);\\n    vec2 offsets[9] = vec2[9](\\n        vec2(-offset, offset), // top-left\\n        vec2(0.0, offset), // top-center\\n        vec2(offset, offset), // top-right\\n        vec2(-offset, 0.0), // center-left\\n        vec2(0.0, 0.0), // center-center\\n        vec2(offset, 0.0), // center-right\\n        vec2(-offset, - offset), // bottom-left\\n        vec2(0.0, - offset), // bottom-center\\n        vec2(offset, - offset)// bottom-right\\n    );\\n    \\n    if (float(u_on_fbo) != 1.) {\\n        //we'll blur\\n        for(int i = 0; i < 9; i ++ ) {\\n            vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));\\n            col += sample_tex * gaussian_kernel[i];\\n        }\\n    }\\n    \\n    return col;\\n}\\n\\n/* </antialiasing.postp_gaussian.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl?");
+eval("module.exports = \"/* <antialiasing.postp_gaussian.frag> */\\n\\n//from postprocessing.fbo we expect:\\n//uniform int u_on_fbo;\\n//uniform sampler2D u_tex;\\nvec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, float divider) {\\n    vec3 col = base_color;\\n    \\n    const float div = divider == 0. ? 16.0 : divider;\\n    float gaussian_kernel[9] = float[9](\\n        1.0 / div, 2.0 / div, 1.0 / div,\\n        2.0 / div, 4.0 / div, 2.0 / div,\\n        1.0 / div, 2.0 / div, 1.0 / div\\n    );\\n    \\n    float offset = 1.0 / max(resolution_dim, 0.01);\\n    vec2 offsets[9] = vec2[9](\\n        vec2(-offset, offset), // top-left\\n        vec2(0.0, offset), // top-center\\n        vec2(offset, offset), // top-right\\n        vec2(-offset, 0.0), // center-left\\n        vec2(0.0, 0.0), // center-center\\n        vec2(offset, 0.0), // center-right\\n        vec2(-offset, - offset), // bottom-left\\n        vec2(0.0, - offset), // bottom-center\\n        vec2(offset, - offset)// bottom-right\\n    );\\n    \\n    if (float(u_on_fbo) != 1.) {\\n        //we'll blur\\n        for(int i = 0; i < 9; i ++ ) {\\n            vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));\\n            if (u_on_fbo != 1) {\\n                //we'll blur\\n                for(int i = 0; i < 9; i ++ ) {\\n                    vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));\\n                    col += sample_tex * gaussian_kernel[i];\\n                }\\n            }\\n            \\n            return col;\\n        }\\n    }\\n}\\n\\n/* </antialiasing.postp_gaussian.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/frag.glsl?");
 
 /***/ }),
 
@@ -220,6 +253,26 @@ eval("module.exports = \"/* <antialiasing.postp_gaussian.frag> */\\n\\n//from po
 /***/ ((module) => {
 
 eval("module.exports = \"/* <antialiasing.postp_gaussian.vert> */\\n\\nvoid postp_gaussian_vert() {}\\n\\n/* </antialiasing.postp_gaussian.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/shaders/vert.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/geometry/quad/shaders/frag.glsl":
+/*!*****************************************************!*\
+  !*** ./src/plugins/geometry/quad/shaders/frag.glsl ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"/* <geometry.quad.frag> */\\n\\nvoid geometry_quad_frag() {}\\n\\n/* <//geometry.quad.frag> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/quad/shaders/frag.glsl?");
+
+/***/ }),
+
+/***/ "./src/plugins/geometry/quad/shaders/vert.glsl":
+/*!*****************************************************!*\
+  !*** ./src/plugins/geometry/quad/shaders/vert.glsl ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+eval("module.exports = \"/* <geometry.quad.vert> */\\n\\nvoid geometry_quad_vert() {}\\n\\n/* <//geometry.quad.vert> */\"\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/quad/shaders/vert.glsl?");
 
 /***/ }),
 
@@ -282,6 +335,17 @@ eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//#
 
 "use strict";
 eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/antialiasing/postp_gaussian/config.json?");
+
+/***/ }),
+
+/***/ "./src/plugins/geometry/quad/config.json":
+/*!***********************************************!*\
+  !*** ./src/plugins/geometry/quad/config.json ***!
+  \***********************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"attributes\":{},\"uniforms\":{}}');\n\n//# sourceURL=webpack://wplug/./src/plugins/geometry/quad/config.json?");
 
 /***/ }),
 
