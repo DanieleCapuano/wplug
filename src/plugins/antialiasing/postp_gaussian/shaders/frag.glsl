@@ -30,17 +30,10 @@ vec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, f
         //we'll blur
         for(int i = 0; i < 9; i ++ ) {
             vec3 sample_tex = vec3(texture(u_tex, texcoord + offsets[i]));
-            if (u_on_fbo != 1) {
-                //we'll blur
-                for(int i = 0; i < 9; i ++ ) {
-                    vec3 sample_tex = vec3(texture(u_tex, clamp(texcoord + offsets[i], vec2(0.0), vec2(1.0))));
-                    col += sample_tex * gaussian_kernel[i];
-                }
-            }
-            
-            return col;
+            col += sample_tex * gaussian_kernel[i];
         }
     }
+    return col;
 }
 
 /* </antialiasing.postp_gaussian.frag> */
