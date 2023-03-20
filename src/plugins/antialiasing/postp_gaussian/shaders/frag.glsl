@@ -6,7 +6,7 @@
 vec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, float divider) {
     vec3 col = base_color;
     
-    const float div = divider == 0. ? 16.0 : divider;
+    float div = divider == 0. ? 16.0 : divider;
     float gaussian_kernel[9] = float[9](
         1.0 / div, 2.0 / div, 1.0 / div,
         2.0 / div, 4.0 / div, 2.0 / div,
