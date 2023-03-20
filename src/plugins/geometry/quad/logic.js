@@ -25,14 +25,16 @@ function _init(scene_config) {
             obj = objects_desc.find(o => o.id === obj_id);
 
         let w = (quad.fullscreen || fullscreen) ? canvas.width : (quad.width || width),
-            h = (quad.fullscreen || fullscreen) ? w / canvas.height : w / (quad.height || height);
+            h = (quad.fullscreen || fullscreen) ? canvas.height : (quad.height || height),
+            aspect = h / w,
+            half_asp = 0.5 * aspect;
         obj.coordinates_def = [
-            [-0.5, -h, 0.5],
-            [0.5, -h, 0.5],
-            [-0.5, h, 0.5],
-            [-0.5, h, 0.5],
-            [0.5, -h, 0.5],
-            [0.5, h, 0.5],
+            [-0.5, -half_asp, 0.5],
+            [0.5, -half_asp, 0.5],
+            [-0.5, half_asp, 0.5],
+            [-0.5, half_asp, 0.5],
+            [0.5, -half_asp, 0.5],
+            [0.5, half_asp, 0.5],
         ]
     });
 
