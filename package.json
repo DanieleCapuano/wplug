@@ -22,6 +22,6 @@
     "copy-webpack-plugin": "^11.0.0"
   },
   "devDependencies": {
-    "wbase": "https://github.com/DanieleCapuano/wbase#master"
+    "wbase": "file:///media/daniele/Data/dev/GIT_REPOS/GIT_PUBLIC_REPOS/wbase/"
   }
 }

@@ -7,8 +7,35 @@ in vec3 a_normal;
 
 const int MAX_LIGHTS_N = 8;
 
-uniform vec3 u_light_positions[MAX_LIGHTS_N];
+// uniform lighting_blinn_phong_UBO {
+    //     vec3 u_ambient_color;
+    //     float u_ambient_intensity;
+    //     int u_nlights;
+    
+    //     vec3 u_light_positions[MAX_LIGHTS_N];
+    //     vec3 u_light_colors[MAX_LIGHTS_N];
+    //     float u_light_intensities[MAX_LIGHTS_N];
+    //     float u_light_specular_exp[MAX_LIGHTS_N];
+    
+    //     //material for the square
+    //     float u_ka;
+    //     float u_kd;
+    //     float u_ks;
+// };
+
+uniform vec3 u_ambient_color;
+uniform float u_ambient_intensity;
 uniform int u_nlights;
+
+uniform vec3 u_light_positions[MAX_LIGHTS_N];
+uniform vec3 u_light_colors[MAX_LIGHTS_N];
+uniform float u_light_intensities[MAX_LIGHTS_N];
+uniform float u_light_specular_exp[MAX_LIGHTS_N];
+
+//material for the square
+uniform float u_ka;
+uniform float u_kd;
+uniform float u_ks;
 
 out vec4 normal;
 out vec3 light_dirs[MAX_LIGHTS_N];
