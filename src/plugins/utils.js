@@ -16,7 +16,9 @@ function _get_active_logic() {
     })();
 }
 
-function _get_config(cfg_json) {
-    let json = cfg_json.default || cfg_json;
+function _get_config(cfg_getter_or_json, opts) {
+    const json = typeof cfg_getter_or_json === 'function' ?
+        cfg_getter_or_json(opts) :
+        (cfg_getter_or_json.default || cfg_getter_or_json);
     return JSON.parse(JSON.stringify(json));
 }

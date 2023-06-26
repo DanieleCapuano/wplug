@@ -9,6 +9,7 @@ export const cleanup = _cleanup;
 const { _get_active, _set_active } = get_active_logic();
 export const set_active = _set_active.bind(null, _init);
 export const get_active = _get_active;
+export const add_data_to_buffer = _add_data_to_buffer;
 
 
 function _init(scene_config) {
@@ -39,6 +40,28 @@ function _init(scene_config) {
     });
 
     return scene_config;
+}
+
+function _add_data_to_buffer(data_conf) {
+    const {
+        coordinate_index,
+        current_bytes_pos,
+        buffer,
+        littleEndian,
+        obj_def,
+    } = data_conf,
+        data_map = [
+            [0, 0],
+            [1, 0],
+            [0, 1],
+            [0, 1],
+            [1, 0],
+            [1, 1]
+        ],
+        texcoord = data_map[coordinate_index];
+
+    buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 0, texcoord[0] * 0xffff, littleEndian);
+    buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 1, texcoord[1] * 0xffff, littleEndian);
 }
 
 function _get_model(scene_config) {

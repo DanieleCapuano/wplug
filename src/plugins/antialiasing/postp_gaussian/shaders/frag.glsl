@@ -3,6 +3,7 @@
 //from postprocessing.fbo we expect:
 //uniform int u_on_fbo;
 //uniform sampler2D u_tex;
+
 vec3 postp_gaussian_frag(vec3 base_color, vec2 texcoord, float resolution_dim, float divider) {
     vec3 col = base_color;
     
