@@ -3,60 +3,70 @@
     "uniforms": {
         "u_nlights": {
             "name": "u_nlights",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1i"
             }
         },
         "u_ka": {
             "name": "u_ka",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1f"
             }
         },
         "u_kd": {
             "name": "u_kd",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1f"
             }
         },
         "u_ks": {
             "name": "u_ks",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1f"
             }
         },
         "u_ambient_color": {
             "name": "u_ambient_color",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "3fv"
             }
         },
         "u_ambient_intensity": {
             "name": "u_ambient_intensity",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1f"
             }
         },
         "u_light_positions": {
             "name": "u_light_positions",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "3fv"
             }
         },
         "u_light_colors": {
             "name": "u_light_colors",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "3fv"
             }
         },
         "u_light_intensities": {
             "name": "u_light_intensities",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1fv"
             }
         },
         "u_light_specular_exp": {
             "name": "u_light_specular_exp",
+            "ubo": "lighting_blinn_phong_UBO",
             "opts": {
                 "fn": "1fv"
             }
