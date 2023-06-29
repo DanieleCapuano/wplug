@@ -46,6 +46,12 @@ function _draw_loop_callback(object_config, scene_config) {
     const { ka, kd, ks } = material;
     const { ambient, number_of_lights, light_positions, light_colors, light_intensities, light_specular_exp } = lighting_conf;
 
+    const format_vs = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT),
+        format_fs = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.MEDIUM_FLOAT),
+        bits_vs = format_vs.precision + Math.log2(format_vs.rangeMin + 1) + 2,
+        bits_fs = format_fs.precision + Math.log2(format_fs.rangeMin + 1) + 2;
+
+
     //TODO use uniform block to minimize gl.uniform[...] calls
     set_uniforms(gl, {
         u_ka: ka,

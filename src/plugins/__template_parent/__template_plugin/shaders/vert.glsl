@@ -1,5 +1,5 @@
-/* <plugin_type.plugin_id.frag> */
+/* <plugin_type.plugin_id.vert> */
 
 //your code here
 
-/* <//plugin_type.plugin_id.frag> */
+/* <//plugin_type.plugin_id.vert> */

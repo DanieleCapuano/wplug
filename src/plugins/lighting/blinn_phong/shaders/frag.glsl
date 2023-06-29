@@ -1,18 +1,24 @@
 /* <lighting.blinn_phong.frag> */
 
-//material for the square
-uniform float u_ka, u_kd, u_ks;
-
 //max number of allowed lights
 const int MAX_LIGHTS_N = 8;
-uniform vec3 u_ambient_color;
-uniform float u_ambient_intensity;
-uniform int u_nlights;
 
-uniform vec3 u_light_positions[MAX_LIGHTS_N];
-uniform vec3 u_light_colors[MAX_LIGHTS_N];
-uniform float u_light_intensities[MAX_LIGHTS_N];
-uniform float u_light_specular_exp[MAX_LIGHTS_N];
+layout (std140) uniform lighting_blinn_phong_UBO {
+    //material for the object
+    float u_ka;
+    float u_kd;
+    float u_ks;
+    
+    vec3 u_ambient_color;
+    float u_ambient_intensity;
+    
+    int u_nlights;
+    
+    float u_light_intensities[MAX_LIGHTS_N];
+    float u_light_specular_exp[MAX_LIGHTS_N];
+    vec3 u_light_positions[MAX_LIGHTS_N];
+    vec3 u_light_colors[MAX_LIGHTS_N];
+};
 
 in vec4 normal;
 in vec3 light_dirs[MAX_LIGHTS_N];
@@ -24,7 +30,7 @@ vec3 compute_lighting_frag(vec3 start_color) {
     
     color += u_ka * u_ambient_color;
     
-    for(int i = 0; i < u_nlights; i ++ ) {
+    for(int i = 0; i < int(u_nlights); i ++ ) {
         vec3 l = normalize(light_dirs[i]);
         vec3 h = normalize(light_half_vects[i]);
         float I = u_light_intensities[i];
