@@ -3,8 +3,6 @@
 //we'll use as inspiration the approach described here
 //https://stackoverflow.com/a/62630376
 
-in vec3 a_normal;
-
 const int MAX_LIGHTS_N = 8;
 
 layout (std140) uniform lighting_blinn_phong_UBO {
@@ -24,7 +22,6 @@ layout (std140) uniform lighting_blinn_phong_UBO {
     vec3 u_light_colors[MAX_LIGHTS_N];
 };
 
-out vec4 normal;
 out vec3 light_dirs[MAX_LIGHTS_N];
 out vec3 light_half_vects[MAX_LIGHTS_N];
 
@@ -41,6 +38,8 @@ int compute_lighting_vert(mat4 view_m, mat4 modelview_m) {
     }
     
     mat4 Mti = transpose(inverse(modelview_m));
+    
+    //normal and a_normal from "base.model"
     normal = (Mti * vec4(a_normal, 0.0));
     
     return 1;
