@@ -3,7 +3,7 @@
 //max number of allowed lights
 const int MAX_LIGHTS_N = 8;
 
-uniform lighting_blinn_phong_UBO {
+layout (std140) uniform lighting_blinn_phong_UBO {
     //material for the object
     float u_ka;
     float u_kd;
@@ -53,36 +53,37 @@ vec3 compute_lighting_frag(vec3 start_color) {
         vec3 h = normalize(light_half_vects[i]);
         
         //<TOBE ADDED>
-        // float I = u_light_intensities[i];
+        float I = u_light_intensities[i];
         //</TOBE ADDED>
         
         //<TOBE REMOVED>
-        float I = lint[i];
+        // float I = lint[i];
         //</TOBE REMOVED>
         
         //<TOBE ADDED>
-        // vec3 Lc = u_light_colors[i];
+        vec3 Lc = u_light_colors[i];
         //</TOBE ADDED>
         
         //<TOBE REMOVED>
-        vec3 Lc = ulc[i];
+        // vec3 Lc = ulc[i];
         //</TOBE REMOVED>
         
         color += (
             (u_kd * I*max(0.0, dot(n, l)) * Lc) +
             //<TOBE ADDED>
-            // (u_ks * I*pow(max(0.0, dot(n, h)), u_light_specular_exp[i]) * Lc)
+            (u_ks * I*pow(max(0.0, dot(n, h)), u_light_specular_exp[i]) * Lc)
             //</TOBE ADDED>
             
             //<TOBE REMOVED>
-            (u_ks * I*pow(max(0.0, dot(n, h)), lse[i]) * Lc)
+            // (u_ks * I*pow(max(0.0, dot(n, h)), lse[i]) * Lc)
             //</TOBE REMOVED>
         );
     }
     
     // vec3 c = vec3(u_ka, u_kd, u_ks);
     // return c;
-    return color;
+    // return color;
+    return u_light_colors[2];
 }
 
 /* </lighting.blinn_phong.frag> */
