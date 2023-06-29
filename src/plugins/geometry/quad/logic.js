@@ -29,14 +29,17 @@ function _init(scene_config) {
             h = (quad.fullscreen || fullscreen) ? canvas.height : (quad.height || height),
             aspect = h / w,
             half_asp = 0.5 * aspect;
+
         obj.coordinates_def = [
             [-0.5, -half_asp, 0.5],
             [0.5, -half_asp, 0.5],
             [-0.5, half_asp, 0.5],
-            [-0.5, half_asp, 0.5],
-            [0.5, -half_asp, 0.5],
             [0.5, half_asp, 0.5],
-        ]
+        ];
+        obj.indices = [
+            0, 1, 2,
+            2, 1, 3
+        ];
     });
 
     return scene_config;
@@ -54,8 +57,6 @@ function _add_data_to_buffer(data_conf) {
             [0, 0],
             [1, 0],
             [0, 1],
-            [0, 1],
-            [1, 0],
             [1, 1]
         ],
         texcoord = data_map[coordinate_index];
