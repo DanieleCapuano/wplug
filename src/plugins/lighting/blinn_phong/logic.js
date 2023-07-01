@@ -40,7 +40,9 @@ function _program_init(scene_config) {
 }
 
 function _draw_loop_callback(object_config, scene_config) {
-    const { lighting, gl } = scene_config;
+    Object.assign(scene_config.scene_desc, _get_model(scene_config));   //update the lighting model to allow lighting changes during time
+    const { gl, scene_desc } = scene_config;
+    const { lighting } = scene_desc;
     const lighting_conf = (lighting || []).find(l => l.id === 'blinn_phong');
     const { object_program, material } = object_config;
     const { ka, kd, ks } = material;
