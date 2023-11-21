@@ -8,7 +8,7 @@ function _get_active_logic() {
 
         function _set_active(_init, active, config) {
             __ACTIVE = !!active;
-            return _init(config);
+            return __ACTIVE ? _init(config) : config;
         }
         function _get_active() {
             return __ACTIVE;
