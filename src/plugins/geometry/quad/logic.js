@@ -63,6 +63,8 @@ function _add_data_to_buffer(data_conf) {
 
     buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 0, texcoord[0] * 0xffff, littleEndian);
     buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 1, texcoord[1] * 0xffff, littleEndian);
+
+    return data_conf;
 }
 
 function _get_model(scene_config) {
