@@ -30,13 +30,13 @@ function _init(scene_config) {
             aspect = h / w,
             half_asp = 0.5 * aspect;
 
-        obj.coordinates_def = [
+        obj.coordinates_def = obj.coordinates_def || [
             [-0.5, -half_asp, 0.5],
             [0.5, -half_asp, 0.5],
             [-0.5, half_asp, 0.5],
             [0.5, half_asp, 0.5],
         ];
-        obj.indices = [
+        obj.indices = obj.indices || [
             0, 1, 2,
             2, 1, 3
         ];
@@ -51,7 +51,6 @@ function _add_data_to_buffer(data_conf) {
         current_bytes_pos,
         buffer,
         littleEndian,
-        obj_def,
     } = data_conf,
         data_map = [
             [0, 0],
@@ -59,7 +58,7 @@ function _add_data_to_buffer(data_conf) {
             [0, 1],
             [1, 1]
         ],
-        texcoord = data_map[coordinate_index];
+        texcoord = data_map[coordinate_index] || [0, 0];
 
     buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 0, texcoord[0] * 0xffff, littleEndian);
     buffer.setUint16(current_bytes_pos + Uint16Array.BYTES_PER_ELEMENT * 1, texcoord[1] * 0xffff, littleEndian);
