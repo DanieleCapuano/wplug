@@ -58,6 +58,27 @@
             "opts": {
                 "fn": "2fv"
             }
+        },
+        "u_mmin_resolution": {
+            "name": "u_mmin_resolution",
+            "ubo": "base_model_UBO",
+            "opts": {
+                "fn": "2fv"
+            }
+        },
+        "u_mmax_resolution": {
+            "name": "u_mmax_resolution",
+            "ubo": "base_model_UBO",
+            "opts": {
+                "fn": "2fv"
+            }
+        },
+        "u_should_remap_resolution": {
+            "name": "u_should_remap_resolution",
+            "ubo": "base_model_UBO",
+            "opts": {
+                "fn": "1i"
+            }
         }
     }
 }

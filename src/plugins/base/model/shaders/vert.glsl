@@ -7,6 +7,9 @@ layout(std140)uniform base_model_UBO {
     mat4 u_projection;
     float u_time;
     vec2 u_resolution;
+    vec2 u_mmin_resolution;
+    vec2 u_mmax_resolution;
+    int u_should_remap_resolution;
 };
 
 in vec3 a_position;
