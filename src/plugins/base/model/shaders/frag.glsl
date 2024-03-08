@@ -23,6 +23,9 @@ vec2 remap_resolution_in_01(vec2 fragCoord) {
         fc = fc / (d - c);  //from fc in [0, d - c] to ==> fc in [0, 1]
         mp = fc;
     }
+    else {
+        mp /= u_resolution.xy;
+    }
     
     return mp;
 }
