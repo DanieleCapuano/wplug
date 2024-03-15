@@ -37,7 +37,8 @@ function _program_init(scene_config) {
         const ///////////////////////
             { id, object_program, fbo } = otd,
             { postprocessing } = objects[id],
-            obj_fboconf = (postprocessing || {});
+            postproc_a = Array.isArray(postprocessing || []) ? postprocessing : [postprocessing],
+            obj_fboconf = postproc_a.find(pp => pp.id === 'fbo');
 
         object_program.fbo_opts = Object.assign({}, fbo_conf, fbo || {}, obj_fboconf || {});
         let opts = object_program.fbo_opts;
