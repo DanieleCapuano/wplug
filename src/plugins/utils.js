@@ -37,10 +37,10 @@ function _conf_overwrite_for_obj(scene_config, obj_to_draw, plug_type, plug_id, 
         { objects } = scene_desc,
         o_keys = Object.keys(objects),
         obj_desc = objects[o_keys.find(ok => ok === obj_to_draw.id)],
-        scene_plug_conf = _get_conf_o(scene_config),
+        scene_plug_conf = _get_conf_o(scene_desc),
         obj_plug_conf = _get_conf_o(obj_to_draw),
         obj_desc_plug_conf = _get_conf_o(obj_desc);
 
     let o = Object.assign(scene_plug_conf, obj_plug_conf, obj_desc_plug_conf);
-    return (additional_overwrites || []).reduce((cfg, ovwt) => Object.assign(cfg, ovwt), o);
+    return (additional_overwrites || []).reduce((cfg, ovwt) => Object.assign(cfg, ovwt || {}), o);
 }
