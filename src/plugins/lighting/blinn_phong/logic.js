@@ -20,6 +20,9 @@ function _init(scene_config) {
 }
 
 function _get_model(scene_config) {
+    //TODO review using utils/conf_overwrite_for_obj() function to overwrite scene-based conf to object-specific ones
+    //this way object-specific lighting overwrites could be defined!
+
     const { scene_desc } = scene_config;
     const { lighting } = scene_desc;
     const lid = (lighting || []).findIndex(l => l.id === 'blinn_phong');

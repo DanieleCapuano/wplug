@@ -19,6 +19,7 @@ function _init(scene_config) {
     const { fullscreen, width, height } = geometry || {};
 
     Object.keys(objects).forEach(obj_id => {
+        //TODO refactor using utils/conf_overwrite_for_obj() function to overwrite scene-based conf to object-specific ones
         const obj_conf = objects[obj_id];
 
         if (!obj_conf.quad) return;

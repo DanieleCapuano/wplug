@@ -21,6 +21,10 @@ function _get_model(scene_config) {
 }
 
 function _program_init(scene_config) {
+    //consider to implement object-specific config overwrites to scene-based plugin logic
+    //e.g. see postprocessing/fbo where we used the conf_overwrite_for_obj (in utils.js) as follows:
+    //object_program.fbo_opts = conf_overwrite_for_obj(scene_config, otd, 'postprocessing', 'fbo', [fbo]);
+
     return scene_config;
 }
 

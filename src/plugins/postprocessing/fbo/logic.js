@@ -1,4 +1,4 @@
-import { get_active_logic } from "../../utils";
+import { conf_overwrite_for_obj, get_active_logic } from "../../utils";
 import { init_program_fbos, texture_data, set_uniforms } from "wbase";
 
 export const get_model = _get_model;
@@ -26,7 +26,7 @@ function _get_model(scene_config) {
 function _program_init(scene_config) {
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
-        { postprocessing, objects } = scene_desc,
+        { postprocessing } = scene_desc,
         fbo_conf = (postprocessing || []).find(cfg => cfg.id === 'fbo'),
         { base_active_texture } = fbo_conf;
 
@@ -35,12 +35,9 @@ function _program_init(scene_config) {
 
     objects_to_draw.forEach(otd => {
         const ///////////////////////
-            { id, object_program, fbo } = otd,
-            { postprocessing } = objects[id],
-            postproc_a = Array.isArray(postprocessing || []) ? postprocessing : [postprocessing],
-            obj_fboconf = postproc_a.find(pp => pp.id === 'fbo');
+            { object_program, fbo } = otd;
 
-        object_program.fbo_opts = Object.assign({}, fbo_conf, fbo || {}, obj_fboconf || {});
+        object_program.fbo_opts = conf_overwrite_for_obj(scene_config, otd, 'postprocessing', 'fbo', [fbo]);
         let opts = object_program.fbo_opts;
 
         //function _init_program_fbos(current_program, gl, opts)
