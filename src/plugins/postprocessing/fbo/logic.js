@@ -26,7 +26,7 @@ function _get_model(scene_config) {
 function _program_init(scene_config) {
     const //////////////////////////
         { gl, canvas, objects_to_draw, scene_desc } = scene_config,
-        { postprocessing } = scene_desc,
+        { postprocessing, objects } = scene_desc,
         fbo_conf = (postprocessing || []).find(cfg => cfg.id === 'fbo'),
         { base_active_texture } = fbo_conf;
 
@@ -35,9 +35,11 @@ function _program_init(scene_config) {
 
     objects_to_draw.forEach(otd => {
         const ///////////////////////
-            { object_program, fbo } = otd;
+            { id, object_program, fbo } = otd,
+            { postprocessing } = objects[id],
+            obj_fboconf = (postprocessing || {});
 
-        object_program.fbo_opts = Object.assign({}, fbo_conf, fbo || {});
+        object_program.fbo_opts = Object.assign({}, fbo_conf, fbo || {}, obj_fboconf || {});
         let opts = object_program.fbo_opts;
 
         //function _init_program_fbos(current_program, gl, opts)
