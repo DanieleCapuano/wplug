@@ -54,7 +54,10 @@ function _draw_loop_callback(object_config, scene_config) {
         { fbo_opts, base_texture } = object_program,
         { has_framebuffer, framebuffers_n, framebuffers_offset } = (fbo_opts || {});
 
-    if (has_framebuffer === false) return scene_config;
+    if (has_framebuffer === false) {
+        texture_data.set_framebuffer(gl, null, canvas.width, canvas.height);
+        return scene_config;
+    }
 
     if (base_texture) {
         gl.bindTexture(gl.TEXTURE_2D, base_texture);
